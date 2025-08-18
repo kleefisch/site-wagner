@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -14,6 +14,7 @@ const Header = () => {
   const [isServicesOpen, setIsServicesOpen] = useState(false); // desktop only
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null); // desktop only
   const [hoveredService, setHoveredService] = useState<string | null>(null); // desktop only
+  const [activeSection, setActiveSection] = useState<string>("/");
   const pathname = usePathname();
 
   // Função para verificar se estamos em uma página de serviços
@@ -29,6 +30,47 @@ const Header = () => {
   };
 
   const activeCategory = getActiveCategory();
+
+  // Hook para detectar qual seção está ativa baseado no scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = [
+        { id: "about-section", href: "#about-section" },
+        { id: "practice-areas", href: "#practice-areas" },
+        { id: "contact", href: "#contact" },
+      ];
+
+      const scrollPosition = window.scrollY + 100; // offset para header fixo
+
+      // Se estiver no topo da página, marcar como início
+      if (scrollPosition < 200) {
+        setActiveSection("/");
+        return;
+      }
+
+      // Verificar qual seção está visível
+      for (const section of sections) {
+        const element = document.getElementById(section.id);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetHeight = element.offsetHeight;
+
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            setActiveSection(section.href);
+            return;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Executar uma vez no mount
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navigation = [
     { name: "Início", href: "/" },
@@ -66,7 +108,7 @@ const Header = () => {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`nav-link text-claro transition-all duration-300${pathname === item.href ? " text-destaque active" : ""}`}
+                className={`nav-link text-claro transition-all duration-300${activeSection === item.href ? " text-destaque active" : ""}`}
               >
                 {item.name}
               </Link>
@@ -97,7 +139,7 @@ const Header = () => {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-claro hover:text-destaque transition-colors block px-2 py-2"
+                  className={`transition-colors block px-2 py-2${activeSection === item.href ? " text-destaque" : " text-claro hover:text-destaque"}`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}

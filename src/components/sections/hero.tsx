@@ -1,6 +1,14 @@
 import Image from "next/image";
 import { WhatsappButton } from "@/components/ui/whatsapp-button";
-import { Phone, Clock } from "lucide-react";
+import {
+  Phone,
+  Clock,
+  Trophy,
+  Users,
+  Shield,
+  CheckCircle,
+  UserStar,
+} from "lucide-react";
 // importação removida, usando SVG estático
 
 const HeroSection = () => {
@@ -11,7 +19,8 @@ const HeroSection = () => {
           {/* Conteúdo */}
           <div className="order-2 lg:order-1 text-center lg:text-left">
             <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-claro leading-tight mb-6">
-              Defenda Seus Direitos com Quem Entende
+              Defenda Seus Direitos{" "}
+              <span className="text-destaque">com Quem Entende</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-300 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
               Quando a liberdade está em risco, contar com um advogado
@@ -19,6 +28,56 @@ const HeroSection = () => {
               criminais, da prisão em flagrante aos tribunais superiores, com
               foco total na defesa técnica qualificada.
             </p>
+
+            {/* Badges de Excelência */}
+            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 mb-8 border border-white/10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
+                  <UserStar className="h-8 w-8 text-destaque flex-shrink-0 mt-1" />
+                  <div>
+                    <div className="text-lg font-bold text-claro">
+                      99% dos Clientes Satisfeitos
+                    </div>
+                    <div className="text-sm text-gray-400">
+                      Com resultados favoráveis
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
+                  <Users className="h-8 w-8 text-destaque flex-shrink-0 mt-1" />
+                  <div>
+                    <div className="text-lg font-bold text-claro">
+                      500+ Processos Atuados
+                    </div>
+                    <div className="text-sm text-gray-400">
+                      Casos criminais conduzidos com êxito
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
+                  <Clock className="h-8 w-8 text-destaque flex-shrink-0 mt-1" />
+                  <div>
+                    <div className="text-lg font-bold text-claro">
+                      Plantão 24h
+                    </div>
+                    <div className="text-sm text-gray-400">
+                      Em casos emergenciais
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
+                  <CheckCircle className="h-8 w-8 text-destaque flex-shrink-0 mt-1" />
+                  <div>
+                    <div className="text-lg font-bold text-claro">
+                      Advogado Especialista
+                    </div>
+                    <div className="text-sm text-gray-400">
+                      Referência em direito criminal
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 mb-8 justify-center lg:justify-start">
@@ -49,8 +108,8 @@ const HeroSection = () => {
             <div className="relative max-w-sm sm:max-w-md lg:max-w-lg">
               <div className="absolute inset-0 bg-white/5 rounded-2xl"></div>
               <Image
-                src="/images/hero-picture.png"
-                alt="Dra. Brennda - Advogada especializada"
+                src="/images/dr-wagner-hero.png"
+                alt="Dr. Wagner Souza - Advogado Criminal Especializado"
                 width={400}
                 height={500}
                 sizes="(max-width: 640px) 300px, (max-width: 1024px) 400px, 550px"

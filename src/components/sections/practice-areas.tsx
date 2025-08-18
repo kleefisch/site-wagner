@@ -2,7 +2,21 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Users, FileText, ShieldCheck, Home, RotateCcw } from "lucide-react";
+import {
+  Users,
+  FileText,
+  ShieldCheck,
+  Home,
+  RotateCcw,
+  Target,
+  DollarSign,
+  Cannabis,
+  Briefcase,
+  Building,
+  Gavel,
+  HeartCrack,
+  Zap,
+} from "lucide-react";
 import { WhatsappButton } from "@/components/ui/whatsapp-button";
 // importação removida, usando SVG estático
 
@@ -11,7 +25,7 @@ const practiceAreas = [
     icon: Users,
     title: "Crimes Contra a Pessoa",
     description:
-      "Defesa especializada em crimes que atentam contra a integridade física e psicológica, como homicídio, lesão corporal e sequestro.",
+      "Defesa em crimes que atentam contra a integridade física e psicológica, como homicídio, lesão corporal e sequestro.",
     detailedServices: [
       "Homicídio e Tentativa",
       "Lesão Corporal",
@@ -21,7 +35,7 @@ const practiceAreas = [
     href: "/areas-de-atuacao#crimes-contra-a-pessoa",
   },
   {
-    icon: FileText,
+    icon: DollarSign,
     title: "Crimes Contra o Patrimônio",
     description:
       "Atuação em casos de furto, roubo, estelionato, extorsão e outros crimes que envolvem bens materiais e financeiros.",
@@ -34,7 +48,7 @@ const practiceAreas = [
     href: "/areas-de-atuacao#crimes-contra-o-patrimonio",
   },
   {
-    icon: Home,
+    icon: Cannabis,
     title: "Lei de Drogas",
     description:
       "Defesa em processos relacionados à Lei de Drogas, incluindo tráfico, posse e associação para o tráfico.",
@@ -47,7 +61,7 @@ const practiceAreas = [
     href: "/areas-de-atuacao#lei-de-drogas",
   },
   {
-    icon: RotateCcw,
+    icon: Briefcase,
     title: "Audiências e Julgamentos",
     description:
       "Representação técnica em audiências, julgamentos, recursos e acompanhamento processual completo.",
@@ -60,7 +74,7 @@ const practiceAreas = [
     href: "/areas-de-atuacao#audiencias-e-julgamentos",
   },
   {
-    icon: RotateCcw,
+    icon: Building,
     title: "Acompanhamento em Delegacias",
     description:
       "Assistência jurídica desde o início da investigação, garantindo proteção de direitos e orientação em depoimentos.",
@@ -73,10 +87,10 @@ const practiceAreas = [
     href: "/areas-de-atuacao#acompanhamento-em-delegacias",
   },
   {
-    icon: Users,
+    icon: Gavel,
     title: "Tribunal do Júri",
     description:
-      "Defesa especializada em crimes dolosos contra a vida, com experiência comprovada em plenário e sustentação oral.",
+      "Defesa em crimes dolosos contra a vida, com experiência comprovada em plenário e sustentação oral.",
     detailedServices: [
       "Defesa em Crimes Dolosos Contra a Vida",
       "Preparação de Estratégia de Defesa",
@@ -86,7 +100,7 @@ const practiceAreas = [
     href: "/areas-de-atuacao#tribunal-do-juri",
   },
   {
-    icon: ShieldCheck,
+    icon: HeartCrack,
     title: "Violência Doméstica",
     description:
       "Atuação em casos de violência doméstica, medidas protetivas e acompanhamento familiar especializado.",
@@ -99,7 +113,7 @@ const practiceAreas = [
     href: "/areas-de-atuacao#violencia-domestica",
   },
   {
-    icon: FileText,
+    icon: Zap,
     title: "Atendimento de Urgência",
     description:
       "Atendimento rápido e eficaz em situações de prisão em flagrante, habeas corpus e plantão 24 horas.",
@@ -144,7 +158,7 @@ const PracticeAreasSection = () => {
             return (
               <div
                 key={index}
-                className="group relative h-52 md:h-60 perspective-1000"
+                className="group relative h-64 md:h-80 perspective-1000"
               >
                 {/* Card Container with flip effect */}
                 <div
@@ -156,10 +170,17 @@ const PracticeAreasSection = () => {
                     onClick={() => toggleCard(index)}
                   >
                     <div className="w-12 sm:w-16 h-12 sm:h-16 bg-destaque/10 rounded-full flex items-center justify-center mb-3 sm:mb-4 group-hover:bg-destaque/20 transition-colors flex-shrink-0">
-                      <IconComponent className="h-8 sm:h-10 w-8 sm:w-10 text-destaque" />
+                      <IconComponent className="h-10 sm:h-12 w-10 sm:w-12 text-destaque" />
                     </div>
                     <h3 className="text-base sm:text-lg font-semibold text-principal mb-2">
-                      {area.title}
+                      <span className="block text-base sm:text-xl font-bold leading-tight break-words whitespace-pre-line">
+                        {area.title.includes("Violência Doméstica")
+                          ? "Violência\nDoméstica"
+                          : `${area.title.split(" ").slice(0, 2).join(" ")}` +
+                            (area.title.split(" ").length > 2
+                              ? `\n${area.title.split(" ").slice(2).join(" ")}`
+                              : "")}
+                      </span>
                     </h3>
                     <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-3">
                       {area.description}
@@ -167,13 +188,9 @@ const PracticeAreasSection = () => {
 
                     {/* Action buttons */}
                     <div className="flex flex-col sm:flex-row gap-2 w-full">
-                      <Link
-                        href={area.href}
-                        className="flex-1 text-center bg-destaque/10 text-destaque py-2 px-3 rounded-lg text-xs font-medium hover:bg-destaque/20 transition-colors"
-                        onClick={(e) => e.stopPropagation()}
-                      >
+                      <span className="flex-1 text-center bg-destaque/10 text-destaque py-2 px-3 rounded-lg text-sm font-medium cursor-default">
                         Saiba Mais
-                      </Link>
+                      </span>
                     </div>
 
                     {/* Mobile flip indicator */}
@@ -194,11 +211,16 @@ const PracticeAreasSection = () => {
                   >
                     {/* Close button for mobile */}
                     <div className="flex items-center justify-between mb-1 sm:mb-2">
-                      <div className="flex items-center">
-                        <IconComponent className="h-3 w-3 sm:h-4 sm:w-4 text-white mr-1" />
-                        <h3 className="text-xs sm:text-base font-semibold text-white">
-                          {area.title}
-                        </h3>
+                      <div className="flex flex-col items-center justify-center w-full mb-2">
+                        <IconComponent className="h-10 sm:h-12 w-10 sm:w-12 text-white mb-2" />
+                        <span className="block text-base sm:text-xl font-bold leading-tight break-words whitespace-pre-line text-white text-center">
+                          {area.title.includes("Violência Doméstica")
+                            ? "Violência\nDoméstica"
+                            : `${area.title.split(" ").slice(0, 2).join(" ")}` +
+                              (area.title.split(" ").length > 2
+                                ? `\n${area.title.split(" ").slice(2).join(" ")}`
+                                : "")}
+                        </span>
                       </div>
                       <button
                         onClick={(e) => {
@@ -213,11 +235,11 @@ const PracticeAreasSection = () => {
                     </div>
 
                     <div className="flex-1 flex flex-col justify-center min-h-0 overflow-hidden">
-                      <div className="grid grid-cols-2 gap-x-1 sm:gap-x-2 gap-y-1 sm:gap-y-1.5 text-white/90 text-xs">
+                      <div className="flex flex-col gap-y-2 text-white/90 text-sm sm:text-base">
                         {area.detailedServices.map((service, serviceIndex) => (
                           <div key={serviceIndex} className="flex items-start">
-                            <div className="w-1 h-1 bg-white/60 rounded-full mr-1 sm:mr-1.5 flex-shrink-0 mt-1"></div>
-                            <span className="leading-tight text-xs">
+                            <div className="w-2 h-2 bg-white/60 rounded-full mr-2 flex-shrink-0 mt-2"></div>
+                            <span className="leading-tight text-sm sm:text-base">
                               {service}
                             </span>
                           </div>
@@ -225,13 +247,12 @@ const PracticeAreasSection = () => {
                       </div>
                     </div>
 
-                    <Link
-                      href={area.href}
-                      className="mt-1 sm:mt-2 w-full bg-white/20 backdrop-blur-sm text-white text-center py-1 px-2 rounded-lg text-xs font-medium hover:bg-white/30 transition-colors flex-shrink-0"
-                      onClick={(e) => e.stopPropagation()}
+                    <WhatsappButton
+                      size="sm"
+                      className="mt-1 sm:mt-2 w-full bg-white/20 backdrop-blur-sm text-white text-center py-1 px-2 rounded-lg text-sm font-medium hover:bg-white/30 transition-colors flex-shrink-0"
                     >
                       Saiba Mais
-                    </Link>
+                    </WhatsappButton>
                   </div>
                 </div>
               </div>
