@@ -15,27 +15,19 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { name: "Início", href: "/" },
-    { name: "A Advogada", href: "/a-advogada" },
-    { name: "Áreas de Atuação", href: "/areas-de-atuacao" },
-    { name: "Artigos", href: "/artigos" },
-    { name: "Contato", href: "/contato" },
+    { name: "Início", href: "#hero" },
+    { name: "O Advogado", href: "#about-section" },
+    { name: "Áreas de Atuação", href: "#practice-areas" },
+    { name: "Serviços", href: "#practice-areas" },
+    { name: "Contato", href: "#contact" },
   ];
 
   const services = [
-    {
-      name: "Direito de Família",
-      href: "/areas-de-atuacao#direito-de-familia",
-    },
-    { name: "Direito Civil", href: "/areas-de-atuacao#direito-civil" },
-    {
-      name: "Direito do Consumidor",
-      href: "/areas-de-atuacao#direito-do-consumidor",
-    },
-    {
-      name: "Direito Imobiliário",
-      href: "/areas-de-atuacao#direito-imobiliario",
-    },
+    { name: "Crimes Contra a Pessoa", href: "#practice-areas" },
+    { name: "Crimes Contra o Patrimônio", href: "#practice-areas" },
+    { name: "Lei de Drogas", href: "#practice-areas" },
+    { name: "Audiências e Julgamentos", href: "#practice-areas" },
+    { name: "Violência Doméstica", href: "#practice-areas" },
   ];
 
   const legalLinks = [
@@ -72,7 +64,7 @@ const Footer = () => {
               </div>
             </Link>
             <p className="text-gray-400 mb-6 leading-relaxed text-sm sm:text-base max-w-[280px] lg:max-w-[320px]">
-              Advocacia especializada com mais de 10 anos de experiência,
+              Advocacia criminal especializada com 5 anos de experiência,
               oferecendo soluções jurídicas personalizadas e eficazes.
             </p>
 
@@ -81,22 +73,26 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="h-4 w-4 text-destaque flex-shrink-0 mt-0.5" />
                 <span className="text-sm break-words">
-                  Av. 136, 777, Setor Marista, Goiânia - GO
+                  Av Eng. Atílio Correia lima, Qd 108 Lt 11
+                  <br />
+                  Cidade Jardim, Goiânia - GO
+                  <br />
+                  74425-030
                 </span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-destaque flex-shrink-0" />
-                <span className="text-sm">(62) 98267-7272</span>
+                <span className="text-sm">(62) 99642-1788</span>
               </div>
               <div className="flex items-start space-x-3">
                 <Mail className="h-4 w-4 text-destaque flex-shrink-0 mt-0.5" />
                 <span className="text-sm break-all">
-                  contato@brenndasilvaadv.com.br
+                  wagnersouza@advocacia.com.br
                 </span>
               </div>
               <div className="flex items-center space-x-3">
                 <Clock className="h-4 w-4 text-destaque flex-shrink-0" />
-                <span className="text-sm">Seg-Sex: 9h-18h</span>
+                <span className="text-sm">Plantão 24 horas</span>
               </div>
             </div>
           </div>

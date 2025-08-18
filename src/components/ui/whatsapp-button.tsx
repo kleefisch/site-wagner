@@ -7,9 +7,8 @@ interface WhatsappButtonProps {
   className?: string;
   size?: "sm" | "lg" | "default" | "icon";
   iconSize?: number;
-  phone?: string; // Ex: '5562982677272'
-  message?: string; // Mensagem do WhatsApp
-  // [key: string]: any; // Removido para evitar uso de 'any' explícito
+  phone?: string;
+  message?: string;
 }
 
 
@@ -24,8 +23,8 @@ export const WhatsappButton = ({
   className = "",
   size = "lg",
   iconSize = 24,
-  phone = "5562982677272",
-  message = "Olá, Dra. Brennda!\n\nPreciso de suporte jurídico. Você poderia me auxiliar?",
+  phone = "5562996421788",
+  message = "Olá, Dr. Wagner!\n\nPreciso de suporte jurídico. Você poderia me auxiliar?",
   ...props
 }: WhatsappButtonProps) => {
   const url = buildWhatsappUrl(phone, message);

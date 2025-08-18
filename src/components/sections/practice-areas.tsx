@@ -16,6 +16,8 @@ import {
   Gavel,
   HeartCrack,
   Zap,
+  Phone,
+  Clock,
 } from "lucide-react";
 import { WhatsappButton } from "@/components/ui/whatsapp-button";
 // importação removida, usando SVG estático
@@ -273,6 +275,18 @@ const PracticeAreasSection = () => {
             >
               <span className="uppercase">Falar no WhatsApp</span>
             </WhatsappButton>
+          </div>
+
+          {/* Contato Rápido */}
+          <div className="flex flex-col sm:flex-row gap-4 text-sm justify-center mt-4">
+            <div className="flex items-center gap-2 text-gray-600 justify-center">
+              <Phone className="h-4 w-4 flex-shrink-0" />
+              <span>(62) 99642-1788</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-600 justify-center">
+              <Clock className="h-4 w-4 flex-shrink-0" />
+              <span>WhatsApp 24h</span>
+            </div>
           </div>
         </div>
       </div>

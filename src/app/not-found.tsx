@@ -1,14 +1,15 @@
-import { Metadata } from 'next';
-import Header from '@/components/sections/header';
-import Footer from '@/components/sections/footer';
-import { Button } from '@/components/ui/button';
-import { WhatsappButton } from '@/components/ui/whatsapp-button';
-import Link from 'next/link';
-import { Home, Search, MessageCircle } from 'lucide-react';
+import { Metadata } from "next";
+import Header from "@/components/sections/header";
+import Footer from "@/components/sections/footer";
+import { Button } from "@/components/ui/button";
+import { WhatsappButton } from "@/components/ui/whatsapp-button";
+import Link from "next/link";
+import { Home, Search, MessageCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: '404 - Página Não Encontrada | Advocacia Brennda Silva',
-  description: 'A página que você procura não foi encontrada. Navegue por nossos serviços jurídicos especializados ou entre em contato conosco.',
+  title: "404 - Página Não Encontrada | Advocacia Brennda Silva",
+  description:
+    "A página que você procura não foi encontrada. Navegue por nossos serviços jurídicos especializados ou entre em contato conosco.",
   robots: {
     index: false,
     follow: true,
@@ -31,8 +32,9 @@ export default function NotFoundPage() {
                   Página Não Encontrada
                 </h1>
                 <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                  A página que você está procurando pode ter sido movida, removida ou não existe. 
-                  Navegue por nossos serviços ou entre em contato conosco.
+                  A página que você está procurando pode ter sido movida,
+                  removida ou não existe. Navegue por nossos serviços ou entre
+                  em contato conosco.
                 </p>
               </div>
 
@@ -41,7 +43,9 @@ export default function NotFoundPage() {
                   <div className="bg-destaque/10 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
                     <Home className="w-6 h-6 text-destaque" />
                   </div>
-                  <h3 className="font-bold text-principal mb-2">Página Inicial</h3>
+                  <h3 className="font-bold text-principal mb-2">
+                    Página Inicial
+                  </h3>
                   <p className="text-sm text-gray-600 mb-4">
                     Conheça nossos serviços e áreas de atuação
                   </p>
@@ -54,12 +58,14 @@ export default function NotFoundPage() {
                   <div className="bg-destaque/10 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
                     <Search className="w-6 h-6 text-destaque" />
                   </div>
-                  <h3 className="font-bold text-principal mb-2">Áreas de Atuação</h3>
+                  <h3 className="font-bold text-principal mb-2">
+                    Áreas de Atuação
+                  </h3>
                   <p className="text-sm text-gray-600 mb-4">
                     Veja todos os nossos serviços jurídicos
                   </p>
                   <Button asChild variant="outline" className="w-full">
-                    <Link href="/areas-de-atuacao">Ver Serviços</Link>
+                    <Link href="/#practice-areas">Ver Serviços</Link>
                   </Button>
                 </div>
 
@@ -67,9 +73,11 @@ export default function NotFoundPage() {
                   <div className="bg-destaque/10 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
                     <MessageCircle className="w-6 h-6 text-destaque" />
                   </div>
-                  <h3 className="font-bold text-principal mb-2">Entre em Contato</h3>
+                  <h3 className="font-bold text-principal mb-2">
+                    Entre em Contato
+                  </h3>
                   <p className="text-sm text-gray-600 mb-4">
-                    Fale diretamente com nossa equipe
+                    Fale diretamente com o advogado criminal especialista
                   </p>
                   <WhatsappButton className="w-full">
                     Falar no WhatsApp
@@ -82,54 +90,34 @@ export default function NotFoundPage() {
                   Nossos Principais Serviços
                 </h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
-                  <Link 
-                    href="/servicos/familia/divorcio" 
-                    className="text-destaque hover:underline"
-                  >
-                    Divórcio
-                  </Link>
-                  <Link 
-                    href="/servicos/familia/guarda-de-filhos" 
-                    className="text-destaque hover:underline"
-                  >
-                    Guarda de Filhos
-                  </Link>
-                  <Link 
-                    href="/servicos/civil/elaboracao-revisao-contratos" 
-                    className="text-destaque hover:underline"
-                  >
-                    Contratos
-                  </Link>
-                  <Link 
-                    href="/servicos/consumidor/danos-morais-materiais" 
-                    className="text-destaque hover:underline"
-                  >
-                    Danos Morais
-                  </Link>
-                  <Link 
-                    href="/servicos/familia/inventario-e-heranca" 
-                    className="text-destaque hover:underline"
-                  >
-                    Inventário
-                  </Link>
-                  <Link 
-                    href="/servicos/imobiliario/regularizacao-imoveis" 
-                    className="text-destaque hover:underline"
-                  >
-                    Imóveis
-                  </Link>
-                  <Link 
-                    href="/servicos/consumidor/planos-saude-seguros" 
-                    className="text-destaque hover:underline"
-                  >
-                    Planos de Saúde
-                  </Link>
-                  <Link 
-                    href="/contato" 
-                    className="text-destaque hover:underline"
-                  >
-                    Contato
-                  </Link>
+                  {/*
+                    "Crimes Contra a Pessoa",
+                    "Crimes Contra o Patrimônio",
+                    "Lei de Drogas",
+                    "Audiências e Julgamentos",
+                    "Acompanhamento em Delegacias",
+                    "Tribunal do júri",
+                    "Violência Doméstica",
+                    "Atendimento de Urgência"
+                  */}
+                  {[
+                    "Crimes Contra a Pessoa",
+                    "Crimes Contra o Patrimônio",
+                    "Lei de Drogas",
+                    "Audiências e Julgamentos",
+                    "Acompanhamento em Delegacias",
+                    "Tribunal do júri",
+                    "Violência Doméstica",
+                    "Atendimento de Urgência",
+                  ].map((service) => (
+                    <Link
+                      key={service}
+                      href="/#practice-areas"
+                      className="text-destaque hover:underline"
+                    >
+                      {service}
+                    </Link>
+                  ))}
                 </div>
               </div>
             </div>

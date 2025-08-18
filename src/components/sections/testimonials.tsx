@@ -1,6 +1,14 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Star,
+  Quote,
+  ChevronLeft,
+  ChevronRight,
+  Phone,
+  Clock,
+} from "lucide-react";
+import { WhatsappButton } from "@/components/ui/whatsapp-button";
 
 interface Testimonial {
   name: string;
@@ -13,46 +21,52 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     name: "M. S. Oliveira",
-    role: "Dona de Casa",
+    role: "Envolvimento com Drogas",
     company: "",
-    content: "Enfrentei um divórcio muito complicado após 15 anos de casada. A Dra. Brennda foi incansável na defesa dos meus direitos e dos meus filhos. Sua firmeza fez toda a diferença. Hoje tenho um acordo justo e sou eternamente grata.",
-    rating: 5
+    content:
+      "Fui acusado de envolvimento com drogas e estava perdido. O Dr. Wagner analisou meu caso detalhadamente e conseguiu a defesa necessária para que meus direitos fossem respeitados. Senti-me protegido e confiante em cada passo.",
+    rating: 5,
   },
   {
     name: "R. C. Martins",
-    role: "Médica",
+    role: "Violência Doméstica",
     company: "",
-    content: "Comprei meu apartamento e após alguns meses começaram a aparecer infiltrações e problemas elétricos graves. A construtora se negava a resolver. A Dra. Brennda foi firme e conseguiu todos os reparos mais indenização.",
-    rating: 5
+    content:
+      "Passei por uma situação de violência doméstica e não sabia o que fazer. O Dr. Wagner me orientou com paciência e garantiu que todas as medidas de proteção fossem tomadas. Tudo foi resolvido de forma rápido, e me senti segura e amparada graças à sua atuação!",
+    rating: 5,
   },
   {
     name: "J. Mendes",
-    role: "Cabeleireira",
+    role: "Acusação de Furto",
     company: "",
-    content: "Estava com problemas na pensão alimentícia do meu filho há meses. A Dra. Brennda conduziu todo o processo com muita competência e sensibilidade com um resultado justo.",
-    rating: 5
+    content:
+      "Fui acusado injustamente de furto. O Dr. Wagner atuou com precisão e conseguiu demonstrar minha inocência. A forma como conduziu minha defesa fez toda a diferença no resultado final.",
+    rating: 5,
   },
   {
     name: "L. A. Costa",
-    role: "Aposentada",
+    role: "Acusação Grave",
     company: "",
-    content: "Descobri um empréstimo fraudulento em meu nome e estavam descontando da minha aposentadoria. A Dra. Brennda reverteu tudo e tive todos os valores devolvidos. Muito obrigada por tudo!",
-    rating: 5
+    content:
+      "Meu irmão enfrentava uma acusação grave. O Dr. Wagner desenvolveu uma estratégia sólida e conseguiu reduzir significativamente os riscos do caso, garantindo que seus direitos fossem respeitados em todas as etapas.",
+    rating: 5,
   },
   {
     name: "C. M. Silva",
-    role: "Professora",
+    role: "Posse de Drogas",
     company: "",
-    content: "Meu plano de saúde negava constantemente meu tratamento. A Dra. Brennda lutou com determinação e conseguiu não só a autorização como também indenização pelos transtornos. Profissional que realmente se importa com o bem-estar dos clientes.",
-    rating: 5
+    content:
+      "Tive um envolvimento em um caso de posse de drogas para consumo. O Dr. Wagner me orientou perfeitamente, apresentou defesa técnica eficaz e conseguiu proteger meus direitos, evitando consequências maiores.",
+    rating: 5,
   },
   {
     name: "T. Almeida",
-    role: "Comerciante",
+    role: "Tribunal do Júri",
     company: "",
-    content: "Enfrentei uma disputa familiar complexa por herança que se arrastava há anos. A Dra. Brennda trouxe clareza ao processo e conseguiu um acordo justo para todos os herdeiros. Sua competência e sensibilidade foram essenciais para resolver essa situação delicada.",
-    rating: 5
-  }
+    content:
+      "Meu caso foi levado ao tribunal do júri e eu estava muito apreensivo. O Dr. Wagner apresentou argumentos firmes e conduziu a defesa com estratégia e dedicação, garantindo um resultado favorável e a melhor proteção possível para mim.",
+    rating: 5,
+  },
 ];
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
@@ -88,7 +102,17 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   );
 }
 
-function CarouselTestimonials({ testimonials, current, setCurrent, onSwipeInteraction }: { testimonials: Testimonial[], current: number, setCurrent: React.Dispatch<React.SetStateAction<number>>, onSwipeInteraction?: () => void }) {
+function CarouselTestimonials({
+  testimonials,
+  current,
+  setCurrent,
+  onSwipeInteraction,
+}: {
+  testimonials: Testimonial[];
+  current: number;
+  setCurrent: React.Dispatch<React.SetStateAction<number>>;
+  onSwipeInteraction?: () => void;
+}) {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
@@ -119,7 +143,9 @@ function CarouselTestimonials({ testimonials, current, setCurrent, onSwipeIntera
           setCurrent((prev) => (prev + 1) % testimonials.length);
         } else {
           // Swipe right
-          setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+          setCurrent(
+            (prev) => (prev - 1 + testimonials.length) % testimonials.length
+          );
         }
         // Chamar callback para mostrar setas após swipe
         if (onSwipeInteraction) {
@@ -141,7 +167,13 @@ function CarouselTestimonials({ testimonials, current, setCurrent, onSwipeIntera
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          <div className="transition-transform duration-500" style={{ transform: `translateX(-${current * 100}%)`, display: 'flex' }}>
+          <div
+            className="transition-transform duration-500"
+            style={{
+              transform: `translateX(-${current * 100}%)`,
+              display: "flex",
+            }}
+          >
             {testimonials.map((testimonial, idx) => (
               <div key={idx} className="min-w-full flex flex-col">
                 <TestimonialCard testimonial={testimonial} />
@@ -150,7 +182,7 @@ function CarouselTestimonials({ testimonials, current, setCurrent, onSwipeIntera
                   {testimonials.map((_, dotIdx) => (
                     <button
                       key={dotIdx}
-                      className={`w-2 h-2 rounded-full transition-colors ${current === dotIdx ? 'bg-destaque' : 'bg-gray-300'}`}
+                      className={`w-2 h-2 rounded-full transition-colors ${current === dotIdx ? "bg-destaque" : "bg-gray-300"}`}
                       onClick={() => setCurrent(dotIdx)}
                       aria-label={`Ir para depoimento ${dotIdx + 1}`}
                     />
@@ -220,8 +252,8 @@ function TestimonialsSection() {
             O que nossos clientes dizem
           </h2>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-            A satisfação dos nossos clientes é nossa maior conquista. 
-            Veja alguns depoimentos de quem confiou em nosso trabalho.
+            A satisfação dos nossos clientes é nossa maior conquista. Veja
+            alguns depoimentos de quem confiou em nosso trabalho.
           </p>
         </div>
 
@@ -233,10 +265,15 @@ function TestimonialsSection() {
             <button
               aria-label="Anterior"
               className={`absolute -left-4 top-1/2 -translate-y-1/2 z-30 p-1 text-destaque/70 hover:text-destaque transition-all duration-500 ${
-                arrowsVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'
+                arrowsVisible
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 -translate-x-2"
               }`}
               onClick={() => {
-                setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+                setCurrent(
+                  (prev) =>
+                    (prev - 1 + testimonials.length) % testimonials.length
+                );
                 handleSwipeInteraction();
               }}
               style={{ background: "none" }}
@@ -246,7 +283,9 @@ function TestimonialsSection() {
             <button
               aria-label="Próximo"
               className={`absolute -right-4 top-1/2 -translate-y-1/2 z-30 p-1 text-destaque/70 hover:text-destaque transition-all duration-500 ${
-                arrowsVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2'
+                arrowsVisible
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 translate-x-2"
               }`}
               onClick={() => {
                 setCurrent((prev) => (prev + 1) % testimonials.length);
@@ -256,10 +295,10 @@ function TestimonialsSection() {
             >
               <ChevronRight className="h-8 w-8" />
             </button>
-            <CarouselTestimonials 
-              testimonials={testimonials} 
-              current={current} 
-              setCurrent={setCurrent} 
+            <CarouselTestimonials
+              testimonials={testimonials}
+              current={current}
+              setCurrent={setCurrent}
               onSwipeInteraction={handleSwipeInteraction}
             />
           </div>
@@ -273,16 +312,48 @@ function TestimonialsSection() {
 
         {/* CTA + Avaliação */}
         <div className="text-center mt-12">
-          <p className="text-gray-700 mb-4">
-            Quer ser nosso próximo cliente satisfeito?
-          </p>
+          <div className="bg-claro/10 backdrop-blur-sm rounded-xl border border-destaque/20 max-w-4xl mx-auto px-6 py-8 mb-8">
+            <h3 className="text-xl font-semibold text-principal mb-2">
+              Proteja seus direitos com defesa especializada
+            </h3>
+            <p className="text-gray-700 mb-6">
+              Não deixe sua liberdade em risco. Entre em contato para uma
+              consulta jurídica estratégica.
+            </p>
+            <div className="flex justify-center">
+              <WhatsappButton
+                size="lg"
+                iconSize={20}
+                className="px-6 py-4 text-lg font-semibold"
+              >
+                <span className="uppercase">Falar com Advogado</span>
+              </WhatsappButton>
+            </div>
+
+            {/* Contato Rápido */}
+            <div className="flex flex-col sm:flex-row gap-4 text-sm justify-center mt-4">
+              <div className="flex items-center gap-2 text-gray-600 justify-center">
+                <Phone className="h-4 w-4 flex-shrink-0" />
+                <span>(62) 99642-1788</span>
+              </div>
+              <div className="flex items-center gap-2 text-gray-600 justify-center">
+                <Clock className="h-4 w-4 flex-shrink-0" />
+                <span>WhatsApp 24h</span>
+              </div>
+            </div>
+          </div>
           <div className="flex flex-col md:flex-row md:items-center md:justify-center text-sm text-gray-600 gap-1 md:gap-2">
             <div className="flex items-center justify-center">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-4 w-4 text-yellow-500 fill-current" />
+                <Star
+                  key={i}
+                  className="h-4 w-4 text-yellow-500 fill-current"
+                />
               ))}
             </div>
-            <span className="block text-center">4.9/5 estrelas baseado em 50+ avaliações</span>
+            <span className="block text-center">
+              4.9/5 estrelas baseado em 500+ avaliações
+            </span>
           </div>
         </div>
       </div>

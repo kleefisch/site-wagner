@@ -16,40 +16,41 @@ import {
 
 export const metadata: Metadata = {
   title:
-    "Dra. Brennda Silva - Advocacia Especializada em São Paulo | Direito de Família, Civil e Consumidor",
+    "Dr. Wagner Souza - Advogado Especialista em Direito Criminal | Goiânia, Brasília, Goiás e DF",
   description:
-    "Advocacia especializada com mais de 10 anos de experiência em Direito de Família, Civil, Contratos e Direito do Consumidor. Atendimento personalizado, soluções jurídicas eficazes e consulta gratuita em São Paulo. Agende sua consulta!",
+    "Dr. Wagner Souza - Advogado Especialista em Direito Criminal. Defesa técnica em prisões, júri, investigações e processos criminais. Atuação em Goiânia, Brasília, Goiás e Distrito Federal.",
   keywords: [
-    "advocacia especializada são paulo",
-    "advogada direito de família",
-    "advogada direito civil",
-    "advogada direito do consumidor",
-    "divórcio consensual",
-    "pensão alimentícia",
-    "inventário herança",
-    "usucapião",
-    "contratos civis",
-    "Dra. Brennda Silva",
-    "consulta gratuita advocacia",
-    "advocacia moderna são paulo",
+    "advocacia criminal",
+    "advogado criminal",
+    "defesa criminal",
+    "direito penal",
+    "prisão",
+    "júri",
+    "Goiânia",
+    "Brasília",
+    "Goiás",
+    "Distrito Federal",
+    "Wagner Souza",
+    "processo criminal",
+    "investigação criminal",
   ],
   openGraph: {
-    title: "Dra. Brennda Silva - Advocacia Especializada em São Paulo",
+    title: "Dr. Wagner Souza - Advogado Especialista em Direito Criminal",
     description:
-      "Advocacia especializada com mais de 10 anos de experiência. Consulta gratuita.",
+      "Defesa técnica em prisões, júri, investigações e processos criminais. Atuação em Goiânia, Brasília, Goiás e Distrito Federal.",
     type: "website",
-    url: "https://brennda-advocacia.vercel.app",
+    url: "https://wagnersouza-advocacia.vercel.app",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Dra. Brennda Silva - Advocacia Especializada",
+        alt: "Dr. Wagner Souza - Advogado Especialista em Direito Criminal",
       },
     ],
   },
   alternates: {
-    canonical: "https://brennda-advocacia.vercel.app",
+    canonical: "https://wagnersouza-advocacia.vercel.app",
   },
 };
 

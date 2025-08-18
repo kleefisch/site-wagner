@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { WhatsappButton } from "@/components/ui/whatsapp-button";
-import { Award, Clock, CheckCircle, IdCard } from "lucide-react";
+import { Award, Clock, CheckCircle, IdCard, Phone } from "lucide-react";
 // importação removida, usando SVG estático
 
 const AboutSection = () => {
@@ -58,8 +58,8 @@ const AboutSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-destaque/10 to-claro/5 rounded-2xl transform rotate-3"></div>
                 <div className="relative w-full h-full">
                   <Image
-                    src="/images/about-picture.jpg"
-                    alt="Dra. Brennda no escritório de advocacia"
+                    src="/images/dr-wagner-about.jpg"
+                    alt="Dr. Wagner Souza no escritório de advocacia"
                     fill
                     sizes="(max-width: 640px) 100vw, 400px"
                     className="rounded-2xl shadow-xl object-cover object-top z-10"
@@ -136,6 +136,18 @@ const AboutSection = () => {
                 </span>
               </WhatsappButton>
             </div>
+
+            {/* Contato Rápido */}
+            <div className="flex flex-col sm:flex-row gap-4 text-sm justify-center lg:justify-start mt-4">
+              <div className="flex items-center gap-2 text-gray-300 justify-center lg:justify-start">
+                <Phone className="h-4 w-4 flex-shrink-0" />
+                <span>(62) 99642-1788</span>
+              </div>
+              <div className="flex items-center gap-2 text-gray-300 justify-center lg:justify-start">
+                <Clock className="h-4 w-4 flex-shrink-0" />
+                <span>WhatsApp 24h</span>
+              </div>
+            </div>
           </div>
 
           {/* Imagem no desktop - oculta no mobile */}
@@ -144,8 +156,8 @@ const AboutSection = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-destaque/10 to-claro/5 rounded-2xl transform rotate-3"></div>
               <div className="relative w-full h-full">
                 <Image
-                  src="/images/about-picture.jpg"
-                  alt="Dra. Brennda no escritório de advocacia"
+                  src="/images/dr-wagner-about.jpg"
+                  alt="Dr. Wagner Souza no escritório de advocacia"
                   fill
                   sizes="(max-width: 1024px) 50vw, 400px"
                   className="rounded-2xl shadow-xl object-cover object-top z-10"

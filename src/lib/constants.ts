@@ -1,59 +1,87 @@
-import { ENV } from './config';
+import { ENV } from "./config";
 
 // Constantes da aplicação
 export const SITE_CONFIG = {
-  name: "Dra. Brennda Silva - Advocacia Especializada",
-  shortName: "Brennda Silva Advocacia",
-  description: "Advocacia especializada com mais de 10 anos de experiência em Direito de Família, Civil, Contratos e Direito do Consumidor. Atendimento personalizado, soluções jurídicas eficazes e consulta gratuita em São Paulo.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://brennda-advocacia.vercel.app",
+  name: "Dr. Wagner Souza - Advogado Especialista em Direito Criminal",
+  shortName: "Wagner Souza Advocacia Criminal",
+  description:
+    "Dr. Wagner Souza - Advogado Especialista em Direito Criminal. Defesa técnica em prisões, júri, investigações e processos criminais. Atuação em Goiânia, Brasília, Goiás e Distrito Federal.",
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    "https://wagnersouza-advocacia.vercel.app",
   ogImage: "/og-image.jpg",
   keywords: [
-    "advocacia especializada são paulo",
-    "advogada direito de família",
-    "advogada direito civil",
-    "advogada direito do consumidor",
-    "divórcio consensual",
-    "pensão alimentícia",
-    "inventário herança",
-    "usucapião",
-    "contratos civis",
-    "Dra. Brennda Silva",
-    "consulta gratuita advocacia",
-    "advocacia moderna são paulo"
+    "advocacia criminal",
+    "advogado criminal",
+    "defesa criminal",
+    "direito penal",
+    "prisão",
+    "júri",
+    "Goiânia",
+    "Brasília",
+    "Goiás",
+    "Distrito Federal",
+    "Wagner Souza",
+    "processo criminal",
+    "investigação criminal",
   ],
 } as const;
 
 export const CONTACT_INFO = {
-  whatsappNumber: "5562982677272",
-  whatsappLink: "https://api.whatsapp.com/send/?phone=5562982677272&text=Ol%C3%A1%2C+Dra.+Brennda%21%0A%0APreciso+de+suporte+jur%C3%ADdico.+Voc%C3%AA+poderia+me+auxiliar%3F&type=phone_number&app_absent=0",
-  email: "contato@brenndasilva.com.br",
-  address: "São Paulo, SP",
+  whatsappNumber: "5562999999999",
+  whatsappLink:
+    "https://api.whatsapp.com/send/?phone=5562999999999&text=Ol%C3%A1%2C+Dr.+Wagner+Souza%21%0A%0APreciso+de+suporte+jur%C3%ADdico+criminal.+Poderia+me+auxiliar%3F&type=phone_number&app_absent=0",
+  email: "contato@wagnersouza.adv.br",
+  address: "Goiânia, GO | Brasília, DF",
 } as const;
 
 export const PRACTICE_AREAS = {
-  familia: {
-    name: "Direito de Família",
-    slug: "familia",
-    description: "Especialização em divórcio, guarda, pensão alimentícia e inventário",
+  pessoa: {
+    name: "Crimes Contra a Pessoa",
+    slug: "pessoa",
+    description:
+      "Defesa em casos de crimes contra a vida, integridade física e honra.",
   },
-  civil: {
-    name: "Direito Civil",
-    slug: "civil", 
-    description: "Contratos, responsabilidade civil e ações indenizatórias",
+  patrimonio: {
+    name: "Crimes Contra o Patrimônio",
+    slug: "patrimonio",
+    description:
+      "Defesa em furtos, roubos, estelionato e outros crimes patrimoniais.",
   },
-  consumidor: {
-    name: "Direito do Consumidor",
-    slug: "consumidor",
-    description: "Defesa dos direitos do consumidor e reparação de danos",
+  drogas: {
+    name: "Lei de Drogas",
+    slug: "drogas",
+    description: "Atuação em processos relacionados à Lei de Drogas.",
   },
-  imobiliario: {
-    name: "Direito Imobiliário",
-    slug: "imobiliario",
-    description: "Usucapião, locação, compra e venda de imóveis",
+  audiencias: {
+    name: "Audiências e Julgamentos",
+    slug: "audiencias",
+    description:
+      "Acompanhamento e defesa técnica em audiências e julgamentos criminais.",
+  },
+  delegacias: {
+    name: "Acompanhamento em Delegacias",
+    slug: "delegacias",
+    description: "Atendimento imediato em delegacias e flagrantes.",
+  },
+  juri: {
+    name: "Tribunal do Júri",
+    slug: "juri",
+    description: "Defesa especializada em processos de júri popular.",
+  },
+  violencia: {
+    name: "Violência Doméstica",
+    slug: "violencia",
+    description: "Defesa e acompanhamento em casos de violência doméstica.",
+  },
+  urgencia: {
+    name: "Atendimento de Urgência",
+    slug: "urgencia",
+    description: "Atendimento emergencial em casos criminais.",
   },
 } as const;
 
 export const SOCIAL_LINKS = {
   whatsapp: CONTACT_INFO.whatsappLink,
-  // Adicionar outros links sociais conforme necessário
+  // Adicione outros links sociais conforme necessário
 } as const;

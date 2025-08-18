@@ -16,10 +16,12 @@ export const WhatsappPopup = () => {
 
     const updateTime = () => {
       const now = new Date();
-      setCurrentTime(now.toLocaleTimeString("pt-BR", { 
-        hour: "2-digit", 
-        minute: "2-digit" 
-      }));
+      setCurrentTime(
+        now.toLocaleTimeString("pt-BR", {
+          hour: "2-digit",
+          minute: "2-digit",
+        })
+      );
     };
 
     updateTime();
@@ -36,11 +38,15 @@ export const WhatsappPopup = () => {
   }, []);
 
   const toggleBubble = useCallback(() => {
-    setShowBubble(prev => !prev);
+    setShowBubble((prev) => !prev);
   }, []);
 
   return (
-    <aside className="fixed bottom-6 right-6 z-50 flex flex-col items-end" role="complementary" aria-label="Atendimento WhatsApp">
+    <aside
+      className="fixed bottom-6 right-6 z-50 flex flex-col items-end"
+      role="complementary"
+      aria-label="Atendimento WhatsApp"
+    >
       {/* Bolha de conversa */}
       {showBubble && (
         <div className="mb-3 animate-bubble-appear">
@@ -49,17 +55,23 @@ export const WhatsappPopup = () => {
             <header className="flex items-center mb-3">
               <div className="flex items-center gap-2">
                 <div className="w-10 h-10 rounded-full overflow-hidden">
-                  <img 
-                    src="/images/brennda.jpg" 
-                    alt="Foto de perfil da Dra. Brennda Silva" 
-                    className="w-full h-full object-cover scale-[2.5] object-[center_-125%]"
+                  <img
+                    src="/images/dr-wagner-about.jpg"
+                    alt="Foto de perfil do Dr. Wagner Souza"
+                    className="w-full h-full object-cover scale-[1.25] object-top"
                     loading="lazy"
                     width={40}
                     height={40}
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = "/favicon.svg";
+                    }}
                   />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 text-sm">Dra. Brennda Silva</h3>
+                  <h3 className="font-semibold text-gray-900 text-sm">
+                    Dr. Wagner Souza
+                  </h3>
                   <p className="text-xs text-green-600">Online</p>
                 </div>
               </div>
@@ -69,8 +81,19 @@ export const WhatsappPopup = () => {
                 aria-label="Fechar mensagem do WhatsApp"
                 type="button"
               >
-                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <svg
+                  className="w-3 h-3"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               </button>
             </header>
@@ -78,17 +101,31 @@ export const WhatsappPopup = () => {
             {/* Mensagem */}
             <div className="bg-[#E7F3E7] rounded-2xl rounded-bl-sm p-3 mb-3 animate-message-appear">
               <p className="text-sm text-gray-800 leading-relaxed">
-                Olá! Aqui é a <strong>Dra. Brennda Silva</strong>. Se precisar de apoio jurídico, estou disponível para ajudar você agora.
+                Olá! Aqui é o <strong>Dr. Wagner Souza</strong>. Se precisar de
+                apoio jurídico, estou disponível para ajudar você agora.
               </p>
               <div className="flex items-center justify-end mt-2 gap-1">
                 <time className="text-xs text-gray-500">{currentTime}</time>
                 {/* Ícones de check duplo do WhatsApp */}
-                <div className="flex items-center -space-x-0.5" aria-label="Mensagem lida">
-                  <svg className="w-3 h-3 text-[#53bdeb]" viewBox="0 0 16 15" fill="currentColor" aria-hidden="true">
-                    <path d="M10.91 3.316l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z"/>
+                <div
+                  className="flex items-center -space-x-0.5"
+                  aria-label="Mensagem lida"
+                >
+                  <svg
+                    className="w-3 h-3 text-[#53bdeb]"
+                    viewBox="0 0 16 15"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M10.91 3.316l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z" />
                   </svg>
-                  <svg className="w-3 h-3 text-[#53bdeb]" viewBox="0 0 16 15" fill="currentColor" aria-hidden="true">
-                    <path d="M10.91 3.316l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z"/>
+                  <svg
+                    className="w-3 h-3 text-[#53bdeb]"
+                    viewBox="0 0 16 15"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M10.91 3.316l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z" />
                   </svg>
                 </div>
               </div>
@@ -100,14 +137,17 @@ export const WhatsappPopup = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-[#1da851] text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-[#16a045] transition-colors w-full"
-              aria-label="Conversar no WhatsApp com Dra. Brennda Silva"
+              aria-label="Conversar no WhatsApp com o Dr. Wagner Souza"
             >
               <WhatsAppLogo className="w-4 h-4" />
               Conversar
             </Link>
 
             {/* Triângulo da bolha */}
-            <div className="absolute -bottom-2 right-4 w-4 h-4 bg-white border-r border-b border-gray-100 transform rotate-45" aria-hidden="true"></div>
+            <div
+              className="absolute -bottom-2 right-4 w-4 h-4 bg-white border-r border-b border-gray-100 transform rotate-45"
+              aria-hidden="true"
+            ></div>
           </article>
         </div>
       )}

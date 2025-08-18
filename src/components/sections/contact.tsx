@@ -72,27 +72,28 @@ const ContactSection = () => {
   const contactInfo = [
     {
       icon: MessageCircle,
-      title: "WhatsApp e Telefone",
-      content: "(62) 98267-7272\nAtendimento 24 horas",
-      link: "https://wa.me/5562982677272?text=Ol%C3%A1%2C%20Dra.%20Brennda!%0A%0APreciso%20de%20suporte%20jur%C3%ADdico.%20Voc%C3%AA%20poderia%20me%20auxiliar%3F",
+      title: "Telefone & WhatsApp",
+      content: "(62) 99642-1788",
+      link: "https://wa.me/5562996421788?text=Olá%2C%20Dr.%20Wagner!%0A%0APreciso%20de%20suporte%20jurídico.%20Você%20poderia%20me%20auxiliar%3F",
       isWhatsApp: true,
     },
     {
       icon: MapPin,
       title: "Endereço",
-      content: "Av. 136, 777\nSetor Marista, Goiânia - GO\nCEP: 74000-000",
+      content:
+        "Av Eng. Atílio Correia lima, Qd 108 Lt 11\nCidade Jardim, Goiânia - GO\n74425-030",
       link: "https://goo.gl/maps/xyz",
     },
     {
       icon: Mail,
       title: "E-mail",
-      content: "contato@brenndasilvaadv.com.br",
-      link: "mailto:contato@brenndasilvaadv.com.br",
+      content: "wagnersouza@advocacia.com.br",
+      link: "mailto:wagnersouza@advocacia.com.br",
     },
     {
       icon: Clock,
       title: "Horário de Atendimento",
-      content: "Seg-Sex: 9h-18h",
+      content: "Plantão 24 horas",
     },
   ];
 

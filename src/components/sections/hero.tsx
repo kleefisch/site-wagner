@@ -105,8 +105,8 @@ const HeroSection = () => {
 
           {/* Imagem */}
           <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-            <div className="relative max-w-sm sm:max-w-md lg:max-w-lg">
-              <div className="absolute inset-0 bg-white/5 rounded-2xl"></div>
+            <div className="relative max-w-sm sm:max-w-md lg:max-w-lg overflow-hidden rounded-2xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-destaque/8 to-white/5 rounded-2xl"></div>
               <Image
                 src="/images/dr-wagner-hero.png"
                 alt="Dr. Wagner Souza - Advogado Criminal Especializado"
@@ -114,7 +114,8 @@ const HeroSection = () => {
                 height={500}
                 sizes="(max-width: 640px) 300px, (max-width: 1024px) 400px, 550px"
                 priority
-                className="relative rounded-2xl shadow-2xl object-cover w-full max-w-lg lg:max-w-xl h-auto"
+                className="relative rounded-2xl shadow-2xl object-cover w-full h-auto"
+                style={{ objectPosition: "center top" }}
               />
             </div>
           </div>

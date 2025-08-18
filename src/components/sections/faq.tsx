@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Plus, Minus } from "lucide-react";
+import { Plus, Minus, Phone, Clock } from "lucide-react";
 import { WhatsappButton } from "@/components/ui/whatsapp-button";
 
 const faqs = [
@@ -75,7 +75,7 @@ const FAQSection = () => {
                 onClick={() => toggleFAQ(index)}
                 className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors group"
               >
-                <h3 className="font-semibold text-principal pr-4 group-hover:text-destaque transition-colors text-sm sm:text-base">
+                <h3 className="font-semibold text-principal pr-4 group-hover:text-destaque transition-colors text-base sm:text-lg">
                   {faq.question}
                 </h3>
                 <div className="flex-shrink-0 w-6 h-6 rounded-full bg-destaque/10 flex items-center justify-center group-hover:bg-destaque/20 transition-colors">
@@ -99,7 +99,7 @@ const FAQSection = () => {
                 }`}
               >
                 <div className="px-6 pb-5 border-t border-gray-100">
-                  <div className="pt-4 text-gray-600 leading-relaxed text-sm sm:text-base">
+                  <div className="pt-4 text-gray-600 leading-relaxed text-base sm:text-lg">
                     {faq.answer}
                   </div>
                 </div>
@@ -126,6 +126,18 @@ const FAQSection = () => {
                 Consultar advogado
               </span>
             </WhatsappButton>
+          </div>
+
+          {/* Contato Rápido */}
+          <div className="flex flex-col sm:flex-row gap-4 text-sm justify-center mt-4">
+            <div className="flex items-center gap-2 text-gray-300 justify-center">
+              <Phone className="h-4 w-4 flex-shrink-0" />
+              <span>(62) 99642-1788</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-300 justify-center">
+              <Clock className="h-4 w-4 flex-shrink-0" />
+              <span>WhatsApp 24h</span>
+            </div>
           </div>
         </div>
       </div>
