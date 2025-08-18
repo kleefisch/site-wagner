@@ -123,7 +123,7 @@ const PracticeAreasSection = () => {
   };
 
   return (
-    <section className="py-8 lg:py-16 bg-secundario">
+    <section id="practice-areas" className="py-8 lg:py-16 bg-secundario">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 lg:mb-16">
@@ -131,9 +131,8 @@ const PracticeAreasSection = () => {
             Áreas de Atuação
           </h2>
           <p className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto">
-            Oferecemos soluções jurídicas especializadas com foco na defesa dos
-            seus direitos e interesses, sempre com atendimento personalizado e
-            estratégias eficazes.
+            Atuação firme em todas as fases do processo criminal, da delegacia
+            aos tribunais superiores.
           </p>
         </div>
 

@@ -8,7 +8,7 @@ const AboutSection = () => {
   const highlights = [
     {
       icon: IdCard,
-      title: "OAB/GO 71.841",
+      title: "OAB/GO 59.075",
       description:
         "Sólida experiência em Direito Criminal/Penal e Processo Penal",
     },
@@ -40,7 +40,7 @@ const AboutSection = () => {
   ];
 
   return (
-    <section className="py-8 lg:py-16 bg-principal">
+    <section id="about-section" className="py-8 lg:py-16 bg-principal">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
           {/* Conteúdo */}
