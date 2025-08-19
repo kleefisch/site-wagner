@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import { useState } from "react";
 import {
   MapPin,
   Phone,
@@ -30,11 +32,7 @@ const Footer = () => {
     { name: "Violência Doméstica", href: "#practice-areas" },
   ];
 
-  const legalLinks = [
-    { name: "Política de Privacidade", href: "/politica-privacidade" },
-    { name: "Termos de Uso", href: "/termos-uso" },
-    { name: "Cookies", href: "/cookies" },
-  ];
+  // Removido: modal e legalLinks
 
   const socialLinks = [
     { name: "Facebook", href: "https://facebook.com", icon: Facebook },
@@ -183,52 +181,37 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Copyright */}
             <div className="text-sm text-gray-400 text-center md:text-left">
-              © {currentYear} Dra. Brennda Advocacia. Todos os direitos
+              © {currentYear} Dr. Wagner Souza Advocacia. Todos os direitos
               reservados.
             </div>
 
-            {/* Legal Links & KleeLabs */}
-            <div className="flex flex-col md:flex-row items-center space-y-3 md:space-y-0 md:space-x-6">
-              <div className="flex flex-wrap justify-center gap-x-4 gap-y-2">
-                {legalLinks.map((link) => (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    className="text-sm text-gray-400 hover:text-destaque transition-colors whitespace-nowrap"
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-              </div>
-
-              {/* KleeLabs Credit */}
-              <div className="flex items-center space-x-2 text-sm text-gray-500">
-                <span>Desenvolvido por</span>
-                <a
-                  href="https://kleelabs.tech"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-1 hover:text-white transition-colors group"
-                >
-                  <Clover className="h-4 w-4 group-hover:text-green-400 transition-colors" />
-                  <span className="font-medium whitespace-nowrap">
-                    <span className="group-hover:text-green-400 transition-colors">
-                      Klee
-                    </span>
-                    <span className="group-hover:text-white transition-colors">
-                      Labs
-                    </span>
+            {/* KleeLabs Credit */}
+            <div className="flex items-center space-x-2 text-sm text-gray-500">
+              <span>Desenvolvido por</span>
+              <a
+                href="https://kleelabs.tech"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-1 hover:text-white transition-colors group"
+              >
+                <Clover className="h-4 w-4 group-hover:text-green-400 transition-colors" />
+                <span className="font-medium whitespace-nowrap">
+                  <span className="group-hover:text-green-400 transition-colors">
+                    Klee
                   </span>
-                </a>
-              </div>
+                  <span className="group-hover:text-white transition-colors">
+                    Labs
+                  </span>
+                </span>
+              </a>
             </div>
           </div>
 
           {/* OAB Info */}
           <div className="mt-4 pt-4 border-t border-gray-800 text-center">
             <p className="text-xs text-gray-500 px-2">
-              Dra. Brennda Silva - OAB/SP 123.456 | Este site está em
-              conformidade com o Código de Ética da OAB
+              Dr. Wagner Souza - OAB/GO 59.075 | Este site está em conformidade
+              com o Código de Ética da OAB
             </p>
           </div>
         </div>
