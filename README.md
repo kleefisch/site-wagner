@@ -1,47 +1,37 @@
-# Site de Advocacia - Dra. Brennda
+# Site Institucional - Dr. Wagner Souza
 
-Site profissional para advocacia especializada, construído como MVP (Minimum Viable Product) com foco em captação de clientes, SEO otimizado e performance.
+Site profissional do Dr. Wagner Souza, Advogado Criminalista. Desenvolvido com foco em presença digital, SEO otimizado e alta performance.
 
 ## 🚀 Tecnologias Utilizadas
 
 - **Framework**: Next.js 14+ com App Router
 - **Linguagem**: TypeScript
-- **Estilização**: Tailwind CSS v4.0 
+- **Estilização**: Tailwind CSS v4.0
 - **Componentes UI**: Shadcn UI
 - **Ícones**: Lucide React
 - **Formulários**: React Hook Form + Zod
-- **CMS**: Sanity.io (para blog - futuro)
 - **Deploy**: Vercel
 
 ## 📋 Funcionalidades
 
-### Homepage Completa
 - ✅ Header com navegação responsiva
 - ✅ Hero Section otimizada para conversão
-- ✅ Áreas de Atuação em grid
-- ✅ Sobre a Advogada com destaques
+- ✅ Áreas de atuação destacadas
+- ✅ Sobre o advogado
 - ✅ Depoimentos de clientes
 - ✅ FAQ com accordion
 - ✅ Formulário de contato funcional
 - ✅ Footer completo com links e informações
-
-### Páginas Adicionais (Futuro)
-- 🔄 A Advogada (`/a-advogada`)
-- 🔄 Áreas de Atuação (`/areas-de-atuacao`)
-- 🔄 Serviços (4 subpáginas)
-- 🔄 Blog/Artigos (`/artigos`)
-- 🔄 Página de Contato independente (`/contato`)
-
-### SEO e Performance
-- ✅ Metadados otimizados
+- ✅ Metadados otimizados para SEO
 - ✅ HTML semântico
 - ✅ Imagens otimizadas com Next.js
 - ✅ Core Web Vitals otimizadas
-- ✅ Responsivo (mobile-first)
+- ✅ Design responsivo (mobile-first)
 
 ## 🛠️ Instalação e Desenvolvimento
 
 ### Pré-requisitos
+
 - Node.js 18+
 - npm ou yarn
 
@@ -69,10 +59,10 @@ Abra [http://localhost:3000](http://localhost:3000) no seu navegador.
 src/
 ├── app/                    # App Router (Next.js 14+)
 │   ├── layout.tsx         # Layout principal
-│   ├── page.tsx           # Homepage
+│   ├── page.tsx           # Página principal
 │   └── globals.css        # Estilos globais
 ├── components/
-│   ├── sections/          # Seções da homepage
+│   ├── sections/          # Seções do site
 │   │   ├── header.tsx
 │   │   ├── hero-section.tsx
 │   │   ├── practice-areas-section.tsx
@@ -87,59 +77,56 @@ src/
 
 ## 🎨 Paleta de Cores
 
-- **Primary**: Azul marinho profissional (#101840)
-- **Accent**: Dourado elegante (#B59037)
-- **Secondary**: Cinza claro (#F8FAFC)
+- **Primária**: Azul marinho (#101840)
+- **Destaque**: Dourado (#B59037)
+- **Secundária**: Cinza claro (#F8FAFC)
 - **Background**: Branco (#FFFFFF)
-- **Text**: Cinza escuro (#1E1E1E)
+- **Texto**: Cinza escuro (#1E1E1E)
 
 ## 📱 Design Responsivo
 
 O site é totalmente responsivo com breakpoints:
+
 - Mobile: < 768px
 - Tablet: 768px - 1024px
 - Desktop: > 1024px
 
 ## 🔧 Customização
 
-### Dados da Advogada
+### Dados do Advogado
+
 Edite os seguintes arquivos para personalizar:
+
 - `src/components/sections/header.tsx` - Nome e navegação
 - `src/components/sections/hero-section.tsx` - Texto principal
-- `src/components/sections/about-section.tsx` - Informações pessoais
+- `src/components/sections/about-section.tsx` - Informações profissionais
 - `src/components/sections/contact-section.tsx` - Informações de contato
 
 ### Cores e Estilos
+
 - `src/app/globals.css` - Variáveis CSS customizadas
 - Componentes usam classes Tailwind CSS
 
 ## 🚀 Deploy
 
 ### Vercel (Recomendado)
+
 ```bash
 # Conectar com GitHub e fazer deploy automático
 # ou usar Vercel CLI
 npx vercel
 ```
 
-### Outras Plataformas
-O projeto é compatível com:
-- Netlify
-- Railway
-- DigitalOcean App Platform
-
 ## 📞 Próximos Passos
 
-1. **Substituir placeholders**: Trocar imagens e textos placeholder pelos reais
-2. **Configurar domínio**: Registrar domínio personalizado
-3. **Implementar CMS**: Integrar Sanity.io para o blog
-4. **Criar páginas adicionais**: Desenvolver páginas restantes
-5. **Analytics**: Adicionar Google Analytics/Tag Manager
-6. **Performance**: Otimizar ainda mais para Core Web Vitals
+1. **Substituir placeholders**: Trocar imagens e textos pelos reais
+2. **Configurar domínio**: Garantir domínio personalizado
+3. **Analytics**: Adicionar Google Analytics/Tag Manager
+4. **Performance**: Otimizar ainda mais para Core Web Vitals
 
 ## 📄 Licença
 
-Este projeto foi desenvolvido especificamente para a Dra. Brennda.
+Este projeto foi desenvolvido para o Dr. Wagner Souza.
 
 ---
 

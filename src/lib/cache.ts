@@ -98,8 +98,8 @@ export function useCache<T>(
         // Verifica se há dados no cache
         const cachedData = apiCache.get(key);
 
-        if (cachedData) {
-          setData(cachedData);
+        if (cachedData !== null && cachedData !== undefined) {
+          setData(cachedData as T);
           setLoading(false);
           return;
         }
@@ -158,7 +158,7 @@ export const cacheUtils = {
         : `memoize:${fn.name}:${JSON.stringify(args)}`;
 
       const cached = apiCache.get(key);
-      if (cached) {
+      if (cached !== null && cached !== undefined) {
         return cached;
       }
 

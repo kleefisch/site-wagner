@@ -7,9 +7,10 @@ import Link from "next/link";
 import { Home, Search, MessageCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "404 - Página Não Encontrada | Advocacia Brennda Silva",
+  title:
+    "404 - Página Não Encontrada | Dr. Wagner Souza - Advogado Criminalista",
   description:
-    "A página que você procura não foi encontrada. Navegue por nossos serviços jurídicos especializados ou entre em contato conosco.",
+    "A página que você procura não foi encontrada. Navegue por nossos serviços de advocacia criminal especializada ou entre em contato diretamente com o Dr. Wagner Souza.",
   robots: {
     index: false,
     follow: true,

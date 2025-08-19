@@ -1,12 +1,12 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: ['/api/', '/admin/', '/_next/'],
+      userAgent: "*",
+      allow: "/",
+      disallow: ["/api/", "/admin/", "/_next/"],
     },
-    sitemap: 'https://brennda-advocacia.vercel.app/sitemap.xml',
-  }
+    sitemap: "https://wagnersouzaadvocacia.com.br/sitemap.xml",
+  };
 }

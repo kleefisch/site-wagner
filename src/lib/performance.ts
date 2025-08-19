@@ -219,8 +219,8 @@ class PerformanceMonitor {
         const result = fn(...args);
 
         // Se for uma Promise, aguarda a conclusão
-        if (result && typeof result.then === "function") {
-          return result.finally(() => endTimer());
+        if (result && typeof (result as Promise<any>).then === "function") {
+          return (result as Promise<any>).finally(() => endTimer());
         }
 
         endTimer();
