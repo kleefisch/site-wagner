@@ -5,7 +5,7 @@ interface CacheItem<T> {
   expiresIn: number;
 }
 
-class SimpleCache<T = any> {
+class SimpleCache<T = unknown> {
   private cache: Map<string, CacheItem<T>> = new Map();
   private defaultTTL: number = 5 * 60 * 1000; // 5 minutos padrão
 
@@ -14,19 +14,19 @@ class SimpleCache<T = any> {
     this.cache.set(key, {
       data,
       timestamp: Date.now(),
-      expiresIn
+      expiresIn,
     });
   }
 
   get(key: string): T | null {
     const item = this.cache.get(key);
-    
+
     if (!item) {
       return null;
     }
 
     const isExpired = Date.now() - item.timestamp > item.expiresIn;
-    
+
     if (isExpired) {
       this.cache.delete(key);
       return null;
@@ -37,13 +37,13 @@ class SimpleCache<T = any> {
 
   has(key: string): boolean {
     const item = this.cache.get(key);
-    
+
     if (!item) {
       return false;
     }
 
     const isExpired = Date.now() - item.timestamp > item.expiresIn;
-    
+
     if (isExpired) {
       this.cache.delete(key);
       return false;
@@ -68,7 +68,7 @@ class SimpleCache<T = any> {
 
   private cleanExpired(): void {
     const now = Date.now();
-    
+
     for (const [key, item] of this.cache.entries()) {
       if (now - item.timestamp > item.expiresIn) {
         this.cache.delete(key);
@@ -84,8 +84,8 @@ export const validationCache = new SimpleCache();
 
 // Hook para cache com React
 export function useCache<T>(
-  key: string, 
-  fetchFn: () => Promise<T>, 
+  key: string,
+  fetchFn: () => Promise<T>,
   ttl?: number
 ) {
   const [data, setData] = useState<T | null>(null);
@@ -97,7 +97,7 @@ export function useCache<T>(
       try {
         // Verifica se há dados no cache
         const cachedData = apiCache.get(key);
-        
+
         if (cachedData) {
           setData(cachedData);
           setLoading(false);
@@ -107,13 +107,13 @@ export function useCache<T>(
         // Se não há cache, busca os dados
         setLoading(true);
         const result = await fetchFn();
-        
+
         // Armazena no cache
         apiCache.set(key, result, ttl);
         setData(result);
         setError(null);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Erro desconhecido');
+        setError(err instanceof Error ? err.message : "Erro desconhecido");
       } finally {
         setLoading(false);
       }
@@ -132,28 +132,31 @@ export function useCache<T>(
 // Utilities para cache
 export const cacheUtils = {
   // Gera chave de cache baseada em objeto
-  generateKey: (prefix: string, params: Record<string, any>): string => {
+  generateKey: (prefix: string, params: Record<string, unknown>): string => {
     const sortedParams = Object.keys(params)
       .sort()
-      .reduce((acc, key) => {
-        acc[key] = params[key];
-        return acc;
-      }, {} as Record<string, any>);
-    
+      .reduce(
+        (acc, key) => {
+          acc[key] = params[key];
+          return acc;
+        },
+        {} as Record<string, unknown>
+      );
+
     return `${prefix}:${JSON.stringify(sortedParams)}`;
   },
 
   // Cache com memoização para funções puras
-  memoize: <T extends (...args: any[]) => any>(
+  memoize: <T extends (...args: unknown[]) => unknown>(
     fn: T,
     generateKey?: (...args: Parameters<T>) => string,
     ttl?: number
   ): T => {
     return ((...args: Parameters<T>) => {
-      const key = generateKey 
+      const key = generateKey
         ? generateKey(...args)
         : `memoize:${fn.name}:${JSON.stringify(args)}`;
-      
+
       const cached = apiCache.get(key);
       if (cached) {
         return cached;
@@ -167,24 +170,27 @@ export const cacheUtils = {
 
   // Cache para dados de sessão
   sessionCache: {
-    set: (key: string, data: any): void => {
-      if (typeof window !== 'undefined') {
-        sessionStorage.setItem(key, JSON.stringify({
-          data,
-          timestamp: Date.now()
-        }));
+    set: (key: string, data: unknown): void => {
+      if (typeof window !== "undefined") {
+        sessionStorage.setItem(
+          key,
+          JSON.stringify({
+            data,
+            timestamp: Date.now(),
+          })
+        );
       }
     },
 
-    get: (key: string, maxAge: number = 30 * 60 * 1000): any => {
-      if (typeof window === 'undefined') return null;
-      
+    get: (key: string, maxAge: number = 30 * 60 * 1000): unknown => {
+      if (typeof window === "undefined") return null;
+
       try {
         const item = sessionStorage.getItem(key);
         if (!item) return null;
 
         const { data, timestamp } = JSON.parse(item);
-        
+
         if (Date.now() - timestamp > maxAge) {
           sessionStorage.removeItem(key);
           return null;
@@ -194,10 +200,10 @@ export const cacheUtils = {
       } catch {
         return null;
       }
-    }
-  }
+    },
+  },
 };
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from "react";
 
 export default SimpleCache;

@@ -1,5 +1,5 @@
-import React from 'react';
-import { ENV } from './config';
+import React from "react";
+import { ENV } from "./config";
 
 // Interface para métricas de performance
 interface PerformanceMetric {
@@ -26,7 +26,7 @@ class PerformanceMonitor {
   private isEnabled: boolean = ENV.IS_PRODUCTION;
 
   constructor() {
-    if (typeof window !== 'undefined' && this.isEnabled) {
+    if (typeof window !== "undefined" && this.isEnabled) {
       this.initializeMonitoring();
     }
   }
@@ -34,10 +34,10 @@ class PerformanceMonitor {
   private initializeMonitoring() {
     // Monitora Core Web Vitals
     this.observeWebVitals();
-    
+
     // Monitora erros JavaScript
     this.observeErrors();
-    
+
     // Monitora navegação
     this.observeNavigation();
   }
@@ -45,99 +45,114 @@ class PerformanceMonitor {
   private observeWebVitals() {
     // Cumulative Layout Shift (CLS)
     this.observeLayoutShift();
-    
+
     // First Input Delay (FID)
     this.observeFirstInputDelay();
-    
+
     // Largest Contentful Paint (LCP)
     this.observeLargestContentfulPaint();
   }
 
   private observeLayoutShift() {
-    if ('PerformanceObserver' in window) {
+    if ("PerformanceObserver" in window) {
       const observer = new PerformanceObserver((list) => {
         let clsValue = 0;
         for (const entry of list.getEntries()) {
-          if (!(entry as any).hadRecentInput) {
-            clsValue += (entry as any).value;
+          if (
+            !(entry as unknown as { hadRecentInput?: boolean }).hadRecentInput
+          ) {
+            clsValue += (entry as unknown as { value?: number }).value ?? 0;
           }
         }
-        
+
         if (clsValue > 0) {
-          this.recordMetric('CLS', clsValue);
+          this.recordMetric("CLS", clsValue);
         }
       });
-      
-      observer.observe({ type: 'layout-shift', buffered: true });
+
+      observer.observe({ type: "layout-shift", buffered: true });
     }
   }
 
   private observeFirstInputDelay() {
-    if ('PerformanceObserver' in window) {
+    if ("PerformanceObserver" in window) {
       const observer = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
-          this.recordMetric('FID', (entry as any).processingStart - entry.startTime);
+          this.recordMetric(
+            "FID",
+            (entry as unknown as { processingStart?: number })
+              .processingStart ?? 0 - entry.startTime
+          );
         }
       });
-      
-      observer.observe({ type: 'first-input', buffered: true });
+
+      observer.observe({ type: "first-input", buffered: true });
     }
   }
 
   private observeLargestContentfulPaint() {
-    if ('PerformanceObserver' in window) {
+    if ("PerformanceObserver" in window) {
       const observer = new PerformanceObserver((list) => {
         const entries = list.getEntries();
         const lastEntry = entries[entries.length - 1];
-        this.recordMetric('LCP', lastEntry.startTime);
+        this.recordMetric("LCP", lastEntry.startTime);
       });
-      
-      observer.observe({ type: 'largest-contentful-paint', buffered: true });
+
+      observer.observe({ type: "largest-contentful-paint", buffered: true });
     }
   }
 
   private observeErrors() {
     // Erros JavaScript não capturados
-    window.addEventListener('error', (event) => {
+    window.addEventListener("error", (event) => {
       this.recordError({
         message: event.message,
         stack: event.error?.stack,
         url: event.filename || window.location.href,
         timestamp: Date.now(),
-        userAgent: navigator.userAgent
+        userAgent: navigator.userAgent,
       });
     });
 
     // Promises rejeitadas não capturadas
-    window.addEventListener('unhandledrejection', (event) => {
+    window.addEventListener("unhandledrejection", (event) => {
       this.recordError({
-        message: event.reason?.message || 'Unhandled Promise Rejection',
+        message: event.reason?.message || "Unhandled Promise Rejection",
         stack: event.reason?.stack,
         url: window.location.href,
         timestamp: Date.now(),
-        userAgent: navigator.userAgent
+        userAgent: navigator.userAgent,
       });
     });
   }
 
   private observeNavigation() {
-    if ('PerformanceObserver' in window) {
+    if ("PerformanceObserver" in window) {
       const observer = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
           const navEntry = entry as PerformanceNavigationTiming;
-          
+
           // Time to First Byte
-          this.recordMetric('TTFB', navEntry.responseStart - navEntry.fetchStart);
-          
+          this.recordMetric(
+            "TTFB",
+            navEntry.responseStart - navEntry.fetchStart
+          );
+
           // DOM Content Loaded
-          this.recordMetric('DCL', navEntry.domContentLoadedEventEnd - navEntry.fetchStart);
-          
+          this.recordMetric(
+            "DCL",
+            navEntry.domContentLoadedEventEnd - navEntry.fetchStart
+          );
+
           // Page Load Complete
-          this.recordMetric('Load', navEntry.loadEventEnd - navEntry.fetchStart);
+          this.recordMetric(
+            "Load",
+            navEntry.loadEventEnd - navEntry.fetchStart
+          );
         }
       });
-      
-      observer.observe({ type: 'navigation', buffered: true });
+
+      observer.observe({ type: "navigation", buffered: true });
     }
   }
 
@@ -149,7 +164,7 @@ class PerformanceMonitor {
       value,
       timestamp: Date.now(),
       url: window.location.href,
-      userAgent: navigator.userAgent
+      userAgent: navigator.userAgent,
     };
 
     this.metrics.push(metric);
@@ -177,14 +192,14 @@ class PerformanceMonitor {
 
     // Log para desenvolvimento
     if (ENV.IS_DEVELOPMENT) {
-      console.error('🚨 Error recorded:', error);
+      console.error("🚨 Error recorded:", error);
     }
   }
 
   // Método para marcar o início de uma operação personalizada
   startTimer(name: string): () => void {
     const startTime = performance.now();
-    
+
     return () => {
       const duration = performance.now() - startTime;
       this.recordMetric(name, duration);
@@ -192,22 +207,22 @@ class PerformanceMonitor {
   }
 
   // Decorator para monitorar funções
-  measureFunction<T extends (...args: any[]) => any>(
+  measureFunction<T extends (...args: unknown[]) => unknown>(
     fn: T,
     name?: string
   ): T {
-    return ((...args: any[]) => {
-      const functionName = name || fn.name || 'anonymous';
+    return ((...args: unknown[]) => {
+      const functionName = name || fn.name || "anonymous";
       const endTimer = this.startTimer(`function:${functionName}`);
-      
+
       try {
         const result = fn(...args);
-        
+
         // Se for uma Promise, aguarda a conclusão
-        if (result && typeof result.then === 'function') {
+        if (result && typeof result.then === "function") {
           return result.finally(() => endTimer());
         }
-        
+
         endTimer();
         return result;
       } catch (error) {
@@ -228,7 +243,10 @@ class PerformanceMonitor {
 
   // Gera relatório de performance
   generateReport(): {
-    metrics: Record<string, { avg: number; min: number; max: number; count: number }>;
+    metrics: Record<
+      string,
+      { avg: number; min: number; max: number; count: number }
+    >;
     errors: ErrorLog[];
     summary: {
       totalMetrics: number;
@@ -237,9 +255,9 @@ class PerformanceMonitor {
     };
   } {
     const metricsByName: Record<string, number[]> = {};
-    
+
     // Agrupa métricas por nome
-    this.metrics.forEach(metric => {
+    this.metrics.forEach((metric) => {
       if (!metricsByName[metric.name]) {
         metricsByName[metric.name] = [];
       }
@@ -247,19 +265,22 @@ class PerformanceMonitor {
     });
 
     // Calcula estatísticas para cada métrica
-    const metricsStats: Record<string, { avg: number; min: number; max: number; count: number }> = {};
-    
+    const metricsStats: Record<
+      string,
+      { avg: number; min: number; max: number; count: number }
+    > = {};
+
     Object.entries(metricsByName).forEach(([name, values]) => {
       metricsStats[name] = {
         avg: values.reduce((a, b) => a + b, 0) / values.length,
         min: Math.min(...values),
         max: Math.max(...values),
-        count: values.length
+        count: values.length,
       };
     });
 
-    const timestamps = this.metrics.map(m => m.timestamp);
-    
+    const timestamps = this.metrics.map((m) => m.timestamp);
+
     return {
       metrics: metricsStats,
       errors: this.getErrors(),
@@ -268,9 +289,9 @@ class PerformanceMonitor {
         totalErrors: this.errors.length,
         timeRange: {
           start: Math.min(...timestamps),
-          end: Math.max(...timestamps)
-        }
-      }
+          end: Math.max(...timestamps),
+        },
+      },
     };
   }
 
@@ -287,11 +308,14 @@ export const performanceMonitor = new PerformanceMonitor();
 // Hook React para usar o monitor
 export function usePerformanceMonitor() {
   return {
-    recordMetric: (name: string, value: number) => performanceMonitor.recordMetric(name, value),
+    recordMetric: (name: string, value: number) =>
+      performanceMonitor.recordMetric(name, value),
     startTimer: (name: string) => performanceMonitor.startTimer(name),
-    measureFunction: <T extends (...args: any[]) => any>(fn: T, name?: string) => 
-      performanceMonitor.measureFunction(fn, name),
-    getReport: () => performanceMonitor.generateReport()
+    measureFunction: <T extends (...args: unknown[]) => unknown>(
+      fn: T,
+      name?: string
+    ) => performanceMonitor.measureFunction(fn, name),
+    getReport: () => performanceMonitor.generateReport(),
   };
 }
 
@@ -301,9 +325,10 @@ export function withPerformanceMonitoring<P extends object>(
   name?: string
 ) {
   return function MonitoredComponent(props: P) {
-    const componentName = name || Component.displayName || Component.name || 'Component';
+    const componentName =
+      name || Component.displayName || Component.name || "Component";
     const endTimer = performanceMonitor.startTimer(`render:${componentName}`);
-    
+
     React.useEffect(() => {
       endTimer();
     });

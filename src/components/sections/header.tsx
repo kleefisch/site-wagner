@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useRef } from "react";
 import { WhatsappButton } from "@/components/ui/whatsapp-button";
 import { Button } from "@/components/ui/button";
@@ -12,27 +12,8 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [menuAnim, setMenuAnim] = useState<"in" | "out">("in");
   const menuTimeout = useRef<NodeJS.Timeout | null>(null);
-  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
-  const [openCategory, setOpenCategory] = useState<string | null>(null);
-  const [isServicesOpen, setIsServicesOpen] = useState(false); // desktop only
-  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null); // desktop only
-  const [hoveredService, setHoveredService] = useState<string | null>(null); // desktop only
   const [activeSection, setActiveSection] = useState<string>("/");
   const pathname = usePathname();
-
-  // Função para verificar se estamos em uma página de serviços
-  const isServicesPage = pathname.startsWith("/servicos");
-
-  // Função para verificar qual categoria está ativa
-  const getActiveCategory = () => {
-    if (pathname.includes("/servicos/familia")) return "Família";
-    if (pathname.includes("/servicos/consumidor")) return "Consumidor";
-    if (pathname.includes("/servicos/civil")) return "Civil";
-    if (pathname.includes("/servicos/imobiliario")) return "Imobiliário";
-    return null;
-  };
-
-  const activeCategory = getActiveCategory();
 
   // Hook para detectar qual seção está ativa baseado no scroll
   useEffect(() => {

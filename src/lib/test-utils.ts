@@ -177,9 +177,9 @@ export const renderWithProviders = (ui: React.ReactElement, options = {}) => {
       <NotificationProvider>
         {children}
       </NotificationProvider>
+
     );
   };
-
   return render(ui, { wrapper: AllProviders, ...options });
 };
 

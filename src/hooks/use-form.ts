@@ -1,84 +1,101 @@
-import { useState, useCallback, ChangeEvent } from 'react';
+import { useState, useCallback, ChangeEvent } from "react";
 
 interface UseFormReturn<T> {
   values: T;
   errors: Record<keyof T, string>;
   isSubmitting: boolean;
-  handleChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
-  handleSubmit: (onSubmit: (values: T) => void | Promise<void>) => (e: React.FormEvent) => Promise<void>;
-  setFieldValue: (field: keyof T, value: any) => void;
+  handleChange: (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => void;
+  handleSubmit: (
+    onSubmit: (values: T) => void | Promise<void>
+  ) => (e: React.FormEvent) => Promise<void>;
+  setFieldValue: (field: keyof T, value: string) => void;
   setFieldError: (field: keyof T, error: string) => void;
   resetForm: () => void;
   isValid: boolean;
 }
 
-export function useForm<T extends Record<string, any>>(
+export function useForm<T extends Record<string, string>>(
   initialValues: T,
   validate?: (values: T) => Record<keyof T, string>
 ): UseFormReturn<T> {
   const [values, setValues] = useState<T>(initialValues);
-  const [errors, setErrors] = useState<Record<keyof T, string>>({} as Record<keyof T, string>);
+  const [errors, setErrors] = useState<Record<keyof T, string>>(
+    {} as Record<keyof T, string>
+  );
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value, type } = e.target;
-    const fieldValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
-    
-    setValues(prev => ({
-      ...prev,
-      [name]: fieldValue
-    }));
+  const handleChange = useCallback(
+    (
+      e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    ) => {
+      const { name, value, type } = e.target;
+      const fieldValue =
+        type === "checkbox" ? (e.target as HTMLInputElement).checked : value;
 
-    // Clear error when user starts typing
-    if (errors[name as keyof T]) {
-      setErrors(prev => ({
+      setValues((prev) => ({
         ...prev,
-        [name]: ''
+        [name]: fieldValue,
       }));
-    }
-  }, [errors]);
 
-  const setFieldValue = useCallback((field: keyof T, value: any) => {
-    setValues(prev => ({
+      // Clear error when user starts typing
+      if (errors[name as keyof T]) {
+        setErrors((prev) => ({
+          ...prev,
+          [name]: "",
+        }));
+      }
+    },
+    [errors]
+  );
+
+  const setFieldValue = useCallback((field: keyof T, value: string) => {
+    setValues((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
   }, []);
 
   const setFieldError = useCallback((field: keyof T, error: string) => {
-    setErrors(prev => ({
+    setErrors((prev) => ({
       ...prev,
-      [field]: error
+      [field]: error,
     }));
   }, []);
 
-  const handleSubmit = useCallback((onSubmit: (values: T) => void | Promise<void>) => {
-    return async (e: React.FormEvent) => {
-      e.preventDefault();
-      setIsSubmitting(true);
+  const handleSubmit = useCallback(
+    (onSubmit: (values: T) => void | Promise<void>) => {
+      return async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
 
-      try {
-        // Run validation if provided
-        if (validate) {
-          const validationErrors = validate(values);
-          const hasErrors = Object.values(validationErrors).some(error => error);
-          
-          if (hasErrors) {
-            setErrors(validationErrors);
-            return;
+        try {
+          // Run validation if provided
+          if (validate) {
+            const validationErrors = validate(values);
+            const hasErrors = Object.values(validationErrors).some(
+              (error) => error
+            );
+
+            if (hasErrors) {
+              setErrors(validationErrors);
+              return;
+            }
           }
-        }
 
-        // Clear errors and submit
-        setErrors({} as Record<keyof T, string>);
-        await onSubmit(values);
-      } catch (error) {
-        console.error('Form submission error:', error);
-      } finally {
-        setIsSubmitting(false);
-      }
-    };
-  }, [values, validate]);
+          // Clear errors and submit
+          setErrors({} as Record<keyof T, string>);
+          await onSubmit(values);
+        } catch (error) {
+          console.error("Form submission error:", error);
+        } finally {
+          setIsSubmitting(false);
+        }
+      };
+    },
+    [values, validate]
+  );
 
   const resetForm = useCallback(() => {
     setValues(initialValues);
@@ -86,7 +103,7 @@ export function useForm<T extends Record<string, any>>(
     setIsSubmitting(false);
   }, [initialValues]);
 
-  const isValid = Object.values(errors).every(error => !error);
+  const isValid = Object.values(errors).every((error) => !error);
 
   return {
     values,
@@ -97,7 +114,7 @@ export function useForm<T extends Record<string, any>>(
     setFieldValue,
     setFieldError,
     resetForm,
-    isValid
+    isValid,
   };
 }
 
@@ -116,21 +133,25 @@ export function useAsync<T>(
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const execute = useCallback(async (...args: any[]) => {
-    try {
-      setLoading(true);
-      setError(null);
-      const result = await asyncFunction(...args);
-      setData(result);
-      return result;
-    } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'Erro desconhecido';
-      setError(errorMessage);
-      throw err;
-    } finally {
-      setLoading(false);
-    }
-  }, [asyncFunction]);
+  const execute = useCallback(
+    async (...args: any[]) => {
+      try {
+        setLoading(true);
+        setError(null);
+        const result = await asyncFunction(...args);
+        setData(result);
+        return result;
+      } catch (err) {
+        const errorMessage =
+          err instanceof Error ? err.message : "Erro desconhecido";
+        setError(errorMessage);
+        throw err;
+      } finally {
+        setLoading(false);
+      }
+    },
+    [asyncFunction]
+  );
 
   const reset = useCallback(() => {
     setData(null);
