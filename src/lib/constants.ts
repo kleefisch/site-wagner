@@ -7,8 +7,7 @@ export const SITE_CONFIG = {
   description:
     "Dr. Wagner Souza - Advogado Especialista em Direito Criminal. Defesa técnica em prisões, júri, investigações e processos criminais. Atuação em Goiânia, Brasília, Goiás e Distrito Federal.",
   url:
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    "https://wagnersouza-advocacia.vercel.app",
+    process.env.NEXT_PUBLIC_SITE_URL || "https://wagnersouzaadvocacia.com.br",
   ogImage: "/og-image.jpg",
   keywords: [
     "advocacia criminal",
@@ -28,9 +27,9 @@ export const SITE_CONFIG = {
 } as const;
 
 export const CONTACT_INFO = {
-  whatsappNumber: "5562999999999",
+  whatsappNumber: "5562996421788",
   whatsappLink:
-    "https://api.whatsapp.com/send/?phone=5562999999999&text=Ol%C3%A1%2C+Dr.+Wagner+Souza%21%0A%0APreciso+de+suporte+jur%C3%ADdico+criminal.+Poderia+me+auxiliar%3F&type=phone_number&app_absent=0",
+    "https://api.whatsapp.com/send/?phone=5562996421788&text=Ol%C3%A1%2C+Dr.+Wagner%21+Preciso+de+suporte+jur%C3%ADdico.+Voc%C3%AA+poderia+me+auxiliar%3F&type=phone_number&app_absent=0",
   email: "contato@wagnersouza.adv.br",
   address: "Goiânia, GO | Brasília, DF",
 } as const;

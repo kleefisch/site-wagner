@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://wagnersouza-advocacia.vercel.app"),
+  metadataBase: new URL("https://wagnersouzaadvocacia.com.br"),
   title: {
     default:
       "Dr. Wagner Souza - Advogado Especialista em Direito Criminal | Goiânia, Brasília, Goiás e DF",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "Dr. Wagner Souza",
-      url: "https://wagnersouza-advocacia.vercel.app",
+      url: "https://wagnersouzaadvocacia.com.br",
     },
   ],
   creator: "Dr. Wagner Souza",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://wagnersouza-advocacia.vercel.app",
+    url: "https://wagnersouzaadvocacia.com.br",
     siteName: "Dr. Wagner Souza - Advogado Criminal",
     title: "Dr. Wagner Souza - Advogado Especialista em Direito Criminal",
     description:
@@ -97,7 +97,7 @@ export const metadata: Metadata = {
     google: "your-google-verification-code",
   },
   alternates: {
-    canonical: "https://wagnersouza-advocacia.vercel.app",
+    canonical: "https://wagnersouzaadvocacia.com.br",
   },
 };
 
@@ -138,8 +138,8 @@ export default function RootLayout({
             "@context": "https://schema.org",
             "@type": "LegalService",
             "name": "Wagner Souza Advocacia Criminal",
-            "image": "https://wagnersouza-advocacia.vercel.app/og-image.jpg",
-            "url": "https://wagnersouza-advocacia.vercel.app",
+            "image": "https://wagnersouzaadvocacia.com.br/og-image.jpg",
+            "url": "https://wagnersouzaadvocacia.com.br",
             "telephone": "+55-62-99642-1788",
             "address": {
               "@type": "PostalAddress",
@@ -154,7 +154,7 @@ export default function RootLayout({
               "name": "Dr. Wagner Souza",
               "jobTitle": "Advogado Especialista em Direito Criminal",
               "telephone": "+55-62-99642-1788",
-              "url": "https://wagnersouza-advocacia.vercel.app",
+              "url": "https://wagnersouzaadvocacia.com.br",
               "alumniOf": "OAB/GO 123456"
             }
           }`,

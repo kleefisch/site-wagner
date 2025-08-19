@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     description:
       "Defesa técnica em prisões, júri, investigações e processos criminais. Atuação em Goiânia, Brasília, Goiás e Distrito Federal.",
     type: "website",
-    url: "https://wagnersouza-advocacia.vercel.app",
+    url: "https://wagnersouzaadvocacia.com.br",
     images: [
       {
         url: "/og-image.jpg",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: "https://wagnersouza-advocacia.vercel.app",
+    canonical: "https://wagnersouzaadvocacia.com.br",
   },
 };
 
