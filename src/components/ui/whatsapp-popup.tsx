@@ -43,7 +43,7 @@ export const WhatsappPopup = () => {
 
   return (
     <aside
-      className="fixed bottom-6 right-6 z-50 flex flex-col items-end"
+      className="fixed bottom-2 right-2 z-50 flex flex-col items-end"
       role="complementary"
       aria-label="Atendimento WhatsApp"
     >

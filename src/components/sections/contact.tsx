@@ -109,6 +109,13 @@ const ContactSection = () => {
             Pronto para defender seus direitos? Entre em contato conosco e
             agende sua consulta personalizada. Estamos aqui para ajudar você.
           </p>
+          <style jsx>{`
+            @media (max-width: 640px) {
+              p.text-xl {
+                font-size: 1rem;
+              }
+            }
+          `}</style>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -131,7 +138,15 @@ const ContactSection = () => {
                         {info.title}
                       </h4>
                       <div className="text-gray-700 whitespace-pre-line mb-3">
-                        {info.link && !info.isWhatsApp ? (
+                        {info.title === "Telefone & WhatsApp" ? (
+                          <a
+                            href="tel:62996421788"
+                            className="text-gray-700 hover:text-destaque focus:text-destaque active:text-destaque transition-colors outline-none"
+                            aria-label="Ligar para (62) 99642-1788"
+                          >
+                            (62) 99642-1788
+                          </a>
+                        ) : info.link && !info.isWhatsApp ? (
                           <a
                             href={info.link}
                             className="hover:text-destaque transition-colors"

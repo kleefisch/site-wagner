@@ -255,6 +255,13 @@ function TestimonialsSection() {
             A satisfação dos nossos clientes é nossa maior conquista. Veja
             alguns depoimentos de quem confiou em nosso trabalho.
           </p>
+          <style jsx>{`
+            @media (max-width: 640px) {
+              p.text-xl {
+                font-size: 1rem;
+              }
+            }
+          `}</style>
         </div>
 
         {/* Carrossel Mobile/Tablet, Grid Desktop */}
@@ -332,10 +339,13 @@ function TestimonialsSection() {
 
             {/* Contato Rápido */}
             <div className="flex flex-col sm:flex-row gap-4 text-sm justify-center mt-4">
-              <div className="flex items-center gap-2 text-gray-600 justify-center">
-                <Phone className="h-4 w-4 flex-shrink-0" />
+              <a
+                href="tel:062996421788"
+                className="flex items-center gap-2 text-gray-600 hover:text-destaque focus:text-destaque active:text-destaque transition-colors justify-center group"
+              >
+                <Phone className="h-4 w-4 flex-shrink-0 text-inherit transition-colors" />
                 <span>(62) 99642-1788</span>
-              </div>
+              </a>
               <div className="flex items-center gap-2 text-gray-600 justify-center">
                 <Clock className="h-4 w-4 flex-shrink-0" />
                 <span>WhatsApp 24h</span>

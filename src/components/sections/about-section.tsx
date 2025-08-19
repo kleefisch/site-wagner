@@ -1,7 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { WhatsappButton } from "@/components/ui/whatsapp-button";
-import { Award, Clock, CheckCircle, IdCard, Phone } from "lucide-react";
+import {
+  Award,
+  Clock,
+  CheckCircle,
+  IdCard,
+  Phone,
+  MapPin,
+  BookOpen,
+} from "lucide-react";
 // importação removida, usando SVG estático
 
 const AboutSection = () => {
@@ -13,17 +21,17 @@ const AboutSection = () => {
         "Sólida experiência em Direito Criminal/Penal e Processo Penal",
     },
     {
-      icon: CheckCircle,
+      icon: MapPin, // Diversificado
       title: "Atuação Regional Abrangente",
       description: "Atendimento em Goiânia e todo o estado de Goiás.",
     },
     {
-      icon: Clock,
+      icon: Award, // Diversificado
       title: "Experiência e Sucesso Comprovados",
       description: "Mais de 5 anos atendendo.",
     },
     {
-      icon: Award,
+      icon: BookOpen, // Diversificado
       title: "Formação de Excelência",
       description: "Graduação em Direito e constante atualização profissional",
     },
@@ -139,10 +147,13 @@ const AboutSection = () => {
 
             {/* Contato Rápido */}
             <div className="flex flex-col sm:flex-row gap-4 text-sm justify-center lg:justify-start mt-4">
-              <div className="flex items-center gap-2 text-gray-300 justify-center lg:justify-start">
-                <Phone className="h-4 w-4 flex-shrink-0" />
+              <a
+                href="tel:062996421788"
+                className="flex items-center gap-2 text-gray-300 hover:text-destaque focus:text-destaque active:text-destaque transition-colors justify-center lg:justify-start group"
+              >
+                <Phone className="h-4 w-4 flex-shrink-0 text-inherit transition-colors" />
                 <span>(62) 99642-1788</span>
-              </div>
+              </a>
               <div className="flex items-center gap-2 text-gray-300 justify-center lg:justify-start">
                 <Clock className="h-4 w-4 flex-shrink-0" />
                 <span>WhatsApp 24h</span>

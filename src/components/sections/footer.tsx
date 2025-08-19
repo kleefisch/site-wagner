@@ -62,7 +62,7 @@ const Footer = () => {
               </div>
             </Link>
             <p className="text-gray-400 mb-6 leading-relaxed text-sm sm:text-base max-w-[280px] lg:max-w-[320px]">
-              Advocacia criminal especializada com 5 anos de experiência,
+              Advocacia criminal especializada com mais de 5 anos de experiência,
               oferecendo soluções jurídicas personalizadas e eficazes.
             </p>
 
@@ -80,7 +80,13 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-destaque flex-shrink-0" />
-                <span className="text-sm">(62) 99642-1788</span>
+                <a
+                  href="tel:62996421788"
+                  className="text-sm text-gray-300 hover:text-destaque focus:text-destaque active:text-destaque transition-colors outline-none"
+                  aria-label="Ligar para (62) 99642-1788"
+                >
+                  (62) 99642-1788
+                </a>
               </div>
               <div className="flex items-start space-x-3">
                 <Mail className="h-4 w-4 text-destaque flex-shrink-0 mt-0.5" />

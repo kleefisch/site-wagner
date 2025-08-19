@@ -13,7 +13,7 @@ import {
 
 const HeroSection = () => {
   return (
-    <section className="py-8 sm:py-12 lg:py-20 bg-principal">
+    <section className="pt-20 pb-8 sm:py-12 lg:py-20 bg-principal">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Conteúdo */}
@@ -22,7 +22,7 @@ const HeroSection = () => {
               Defenda Seus Direitos{" "}
               <span className="text-destaque">com Quem Entende</span>
             </h1>
-            <p className="text-lg sm:text-xl text-gray-300 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            <p className="text-base sm:text-lg lg:text-xl text-gray-300 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
               Quando a liberdade está em risco, contar com um advogado
               experiente faz toda a diferença. Atuação completa em processos
               criminais, da prisão em flagrante aos tribunais superiores, com
@@ -32,10 +32,11 @@ const HeroSection = () => {
             {/* Badges de Excelência */}
             <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 mb-8 border border-white/10">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
-                  <UserStar className="h-8 w-8 text-destaque flex-shrink-0 mt-1" />
+                {/* Layout mobile: vertical | Layout desktop: horizontal */}
+                <div className="flex flex-col sm:flex-row sm:items-start gap-3 p-3 bg-white/5 rounded-lg text-center sm:text-left">
+                  <UserStar className="h-8 w-8 text-destaque mx-auto sm:mx-0 sm:flex-shrink-0 sm:mt-1" />
                   <div>
-                    <div className="text-lg font-bold text-claro">
+                    <div className="text-base sm:text-lg font-bold text-claro">
                       99% dos Clientes Satisfeitos
                     </div>
                     <div className="text-sm text-gray-400">
@@ -43,10 +44,10 @@ const HeroSection = () => {
                     </div>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
-                  <Users className="h-8 w-8 text-destaque flex-shrink-0 mt-1" />
+                <div className="flex flex-col sm:flex-row sm:items-start gap-3 p-3 bg-white/5 rounded-lg text-center sm:text-left">
+                  <Users className="h-8 w-8 text-destaque mx-auto sm:mx-0 sm:flex-shrink-0 sm:mt-1" />
                   <div>
-                    <div className="text-lg font-bold text-claro">
+                    <div className="text-base sm:text-lg font-bold text-claro">
                       500+ Processos Atuados
                     </div>
                     <div className="text-sm text-gray-400">
@@ -54,10 +55,10 @@ const HeroSection = () => {
                     </div>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
-                  <Clock className="h-8 w-8 text-destaque flex-shrink-0 mt-1" />
+                <div className="flex flex-col sm:flex-row sm:items-start gap-3 p-3 bg-white/5 rounded-lg text-center sm:text-left">
+                  <Clock className="h-8 w-8 text-destaque mx-auto sm:mx-0 sm:flex-shrink-0 sm:mt-1" />
                   <div>
-                    <div className="text-lg font-bold text-claro">
+                    <div className="text-base sm:text-lg font-bold text-claro">
                       Plantão 24h
                     </div>
                     <div className="text-sm text-gray-400">
@@ -65,10 +66,10 @@ const HeroSection = () => {
                     </div>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
-                  <CheckCircle className="h-8 w-8 text-destaque flex-shrink-0 mt-1" />
+                <div className="flex flex-col sm:flex-row sm:items-start gap-3 p-3 bg-white/5 rounded-lg text-center sm:text-left">
+                  <CheckCircle className="h-8 w-8 text-destaque mx-auto sm:mx-0 sm:flex-shrink-0 sm:mt-1" />
                   <div>
-                    <div className="text-lg font-bold text-claro">
+                    <div className="text-base sm:text-lg font-bold text-claro">
                       Advogado Especialista
                     </div>
                     <div className="text-sm text-gray-400">
@@ -92,10 +93,13 @@ const HeroSection = () => {
 
             {/* Contato Rápido */}
             <div className="flex flex-col sm:flex-row gap-4 text-sm justify-center lg:justify-start">
-              <div className="flex items-center gap-2 text-gray-300 justify-center lg:justify-start">
-                <Phone className="h-4 w-4 flex-shrink-0" />
+              <a
+                href="tel:062996421788"
+                className="flex items-center gap-2 justify-center lg:justify-start group text-gray-300 hover:text-destaque focus:text-destaque active:text-destaque transition-colors focus:outline-none"
+              >
+                <Phone className="h-4 w-4 flex-shrink-0 text-inherit transition-colors" />
                 <span>(62) 99642-1788</span>
-              </div>
+              </a>
               <div className="flex items-center gap-2 text-gray-300 justify-center lg:justify-start">
                 <Clock className="h-4 w-4 flex-shrink-0" />
                 <span>WhatsApp 24h</span>

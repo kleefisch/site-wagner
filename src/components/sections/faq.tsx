@@ -62,6 +62,13 @@ const FAQSection = () => {
             Esclarecemos as principais dúvidas sobre nossos serviços jurídicos.
             Se sua pergunta não estiver aqui, entre em contato conosco.
           </p>
+          <style jsx>{`
+            @media (max-width: 640px) {
+              p.text-xl {
+                font-size: 1rem;
+              }
+            }
+          `}</style>
         </div>
 
         {/* FAQ Custom Design */}
@@ -131,8 +138,14 @@ const FAQSection = () => {
           {/* Contato Rápido */}
           <div className="flex flex-col sm:flex-row gap-4 text-sm justify-center mt-4">
             <div className="flex items-center gap-2 text-gray-300 justify-center">
-              <Phone className="h-4 w-4 flex-shrink-0" />
-              <span>(62) 99642-1788</span>
+              <a
+                href="tel:62996421788"
+                className="flex items-center gap-2 group text-gray-300 hover:text-destaque focus:text-destaque active:text-destaque transition-colors outline-none"
+                aria-label="Ligar para (62) 99642-1788"
+              >
+                <Phone className="h-4 w-4 flex-shrink-0 group-hover:text-destaque group-focus:text-destaque group-active:text-destaque transition-colors" />
+                <span className="transition-colors">(62) 99642-1788</span>
+              </a>
             </div>
             <div className="flex items-center gap-2 text-gray-300 justify-center">
               <Clock className="h-4 w-4 flex-shrink-0" />

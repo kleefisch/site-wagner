@@ -229,7 +229,7 @@ const PracticeAreasSection = () => {
                           e.stopPropagation();
                           toggleCard(index);
                         }}
-                        className="lg:hidden bg-white/20 rounded-full p-1 hover:bg-white/30 transition-colors"
+                        className="lg:hidden absolute top-3 right-3 bg-white/20 rounded-full p-1.5 hover:bg-white/30 transition-colors"
                         aria-label="Fechar detalhes"
                       >
                         <RotateCcw className="h-3 w-3 text-white" />
@@ -279,10 +279,13 @@ const PracticeAreasSection = () => {
 
           {/* Contato Rápido */}
           <div className="flex flex-col sm:flex-row gap-4 text-sm justify-center mt-4">
-            <div className="flex items-center gap-2 text-gray-600 justify-center">
-              <Phone className="h-4 w-4 flex-shrink-0" />
+            <a
+              href="tel:062996421788"
+              className="flex items-center gap-2 justify-center group text-gray-600 hover:text-destaque focus:text-destaque active:text-destaque transition-colors focus:outline-none"
+            >
+              <Phone className="h-4 w-4 flex-shrink-0 text-inherit transition-colors" />
               <span>(62) 99642-1788</span>
-            </div>
+            </a>
             <div className="flex items-center gap-2 text-gray-600 justify-center">
               <Clock className="h-4 w-4 flex-shrink-0" />
               <span>WhatsApp 24h</span>
